@@ -5,7 +5,10 @@ import re
 import requests
 import config
 from pyxlsb import convert_date
+import pafy
 import random
+import dateutil.parser
+import wikipedia
 
 reddit = praw.Reddit(client_id=config.client_id, 
                      client_secret=config.client_secret, 
@@ -36,7 +39,6 @@ Here are the list of commands you can tell me (case sensitive):
 8.) dadjoke = witness a dad joke.'''
 
 
-
 def listToString(s):
     str1 = "\n \n"
     return (str1.join(s))
@@ -53,24 +55,80 @@ def make_reply(msg):
 
             reply = quote['content'] + " - " + quote['author']
 
-        elif msg == "dogs" or msg == "dog":
+        # ==========================WORK IN PROGRESS==================
+        #elif "ytdl" in msg:
+        #    msg = msg.replace("ytdl ", "")
+        #    video = pafy.new(msg)
+        #    audio = video.getbestaudio(preftype="m4a")
+
+        elif "wiki" in msg:
+            msg = msg.replace("wiki ", "")
+
+            try:
+                wiki_results = wikipedia.search(msg)
+                text = "Results for: {}".format(msg)
+                wikilist = []
+                for results in wiki_results:
+                    try:
+                        wikilist.append(wikipedia.page(results).url)
+
+                    except: 
+                        pass
+
+                reply = "Here are the results for " + msg + " : " + "\n \n" + listToString(wikilist)
+            
+            except:
+                pass
+
+        elif msg == "corona":
+            try:
+                url = 'https://covid-193.p.rapidapi.com/statistics'
+                querystring = { "country": "Philippines" }
+
+                headers = {
+                    'x-rapidapi-host': 'covid-193.p.rapidapi.com',
+                    'x-rapidapi-key': 'be7f37114bmsh38c0486c35a5050p1bc1e5jsnf574155ad041'
+                }
+
+                response = requests.request("GET", url, headers=headers, params=querystring).json()
+                data = response['response']
+                d = data[0]
+                disease = ['All: ' + str(d['cases']['total']), 'Recovered: ' + str(d['cases']['recovered']), 'Deaths: ' + str(d['deaths']['total']), 'New: ' + str(d['cases']['new']), 'Critical: ' + str(d['cases']['critical']), 'Time: ' + (str(dateutil.parser.parse(d['time'])))]
+                """deses = {
+                        'all': d['cases']['total'],
+                        'recovered': d['cases']['recovered'],
+                        'deaths': d['deaths']['total'],
+                        'new': d['cases']['new'],
+                        'critical': d['cases']['critical'],
+                        'time': dateutil.parser.parse(d['time'])
+                }"""
+                
+                reply = "Let's hope that the virus ends as soon as possible. Here is the latest report:" + "\n \n" + listToString(disease)
+
+
+            except:
+                reply = exceptiontext
+
+        elif msg == "dogs" or msg == "dog" or msg == "doge":
+            quotetext = ["Here goes the Doge Barrage!", "Doge: I am the lucid dream. The monster in your nightmares. The fiend of a thousand faces. Just kidding. Can I have my food now?"]
             DOG_URL = 'http://api.thedogapi.com/v1/images/search'
             DOG_API_KEY = '3b392042-b329-4b00-a6f6-b14d3b585396'
             DOG_HEADERS = { 'x-api-key': DOG_API_KEY  }
             IMG_PARAMS = ['jpg,png', 'gif',]
             params = {"mime_types": random.choice(IMG_PARAMS)}
             thecat = requests.request("GET", DOG_URL, params=params, headers= DOG_HEADERS).json()
-            reply = "Cute Doge Incoming!!" + "\n" + thecat[0]['url']
+            reply = random.choice(quotetext) + "\n" + thecat[0]['url']
 
         # ==========================P U S S Y SECTION========================
         elif msg == "cats" or msg == "cat":
+            catquotetext = ["Cat: All will serve me in time.", "Cat: I'm fabulous!"]
             CAT_URL = 'http://api.thecatapi.com/v1/images/search'
             CAT_API_KEY = 'fccdd277-481e-4ce8-91f6-74494640b167'
             CAT_HEADERS = { 'x-api-key': CAT_API_KEY  }
             IMG_PARAMS = ['jpg,png', 'gif',]
             params = {"mime_types": random.choice(IMG_PARAMS)}
             thecat = requests.request("GET", CAT_URL, params=params, headers= CAT_HEADERS).json()
-            reply = "What? Never seen a cool cat?" + "\n" + thecat[0]['url']
+            reply = random.choice(catquotetext) + "\n" + thecat[0]['url']
 
         # ==========================D A D J O K E S========================
         elif msg == "dadjoke":
@@ -172,8 +230,14 @@ def make_reply(msg):
                 hot = subreddit.hot(limit=5)
                 redlist = []
                 
-                for submission in hot:
-                    redlist.append(submission.title)
+                for index, submission in enumerate(hot, start=1):
+                    redlist.append(str(index) + ".) " + submission.title)
+
+                    if(submission.selftext == ""):
+                        pass
+                    else:
+                        redlist.append("- " + submission.selftext)
+
                     redlist.append(submission.url)
 
                 reply = "Here are the hottest topics at " + msg + " : " + "\n \n" + listToString(redlist)
@@ -201,3 +265,5 @@ while True:
             from_ = item["message"]["from"]["id"]
             reply = make_reply(message)
             bot.send_message(reply, from_)
+
+    
