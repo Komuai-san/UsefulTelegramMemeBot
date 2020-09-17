@@ -14,6 +14,8 @@ mainhelp = """Hi there! To know about the commands for specific tasks, kindly ty
 
 """
 
+projectlink = 'https://github.com/Komuai-san/UsefulTelegramMemeBot'
+
 wikihelp = """'wiki' + anything you want to search = Returns a list of wiki links related to your query. (takes some time but does the job.)
 weekc + Anything you want to search = Returns a long-ass(depends) summary on the subject. This is experimental and would not return anything if summary is really long. I will tell you if that's the case.
 """

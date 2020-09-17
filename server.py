@@ -37,6 +37,15 @@ def make_reply(msg):
 
             reply = quote['content'] + " - " + quote['author']
 
+        elif "unsplash" in msg:
+            try:
+                msg = msg.replace("unsplash ", "")
+                url = 'https://source.unsplash.com/random?{0}'.format(msg)
+                r = requests.get(url)
+                reply = r.url
+            except:
+                reply = "Oof. Error."
+
         elif "weder" in msg:
             try:
                 msg = msg.replace("weder ", "")
@@ -50,7 +59,7 @@ def make_reply(msg):
                     flavor = "Better get those blankets ready. Chilly chilly brrrrrt brrrrrt!"
                 
                 elif float(temperature) > 30.00:
-                    flavor = "Hot hot hot! Better get an umbrella or get em fans in full throttle >:)"
+                    flavor = "Hot hot hot! Better get an umbrella or get em fans on full throttle >:)"
 
                 reply = "The weather for today in {} is: \n\n".format(city) + "Temperature: " + temperature + ", " + description + "\n\n" + flavor
 
