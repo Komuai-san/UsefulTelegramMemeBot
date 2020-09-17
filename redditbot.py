@@ -2,7 +2,6 @@ import praw
 import re
 import requests
 import config
-from pyxlsb import convert_date
 
 reddit = praw.Reddit(client_id=config.client_id, 
                      client_secret=config.client_secret, 
@@ -15,19 +14,11 @@ subreddit = reddit.subreddit('python')
 
 hot = subreddit.hot(limit=5)
 
-for submission in hot:
+"""for submission in hot:
     if not submission.stickied:
         print("Title: {}, By: {}, Posted: {}, Ups: {}, Downs: {}".format(submission.title, submission.author_fullname, submission.created_utc, submission.ups, submission.downs))
         print(submission.selftext)
-        print(submission.url)
-
-
-rand = subreddit.random
-
-for rando in rand:
-    print(rando.title)
-
-
+        print(submission.url)"""
         
 """comments = submission.comments
 

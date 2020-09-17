@@ -11,7 +11,7 @@ index = 0
 response = requests.get(dicturl).json()
 print(response['stems'])'''
 
-url = 'https://api.dictionaryapi.dev/api/v2/entries/en/brother'
+url = 'https://api.dictionaryapi.dev/api/v2/entries/en/crazy'
 response = requests.get(url).json()
 """print(response[0]['word'])
 print(response[0]['phonetics'][0]['text'])
@@ -30,15 +30,25 @@ while index <=4:
         break
 
 print(response[0]['phonetics'][0]['audio'])"""
-
 print(response[0])
 print(response[0]['word'])
 print(response[0]['phonetics'][0]['text'])
 print()
-while index<=25:
+while index<=len(response[0]):
     try:
         print(response[0]['meanings'][index]['partOfSpeech'])
         print(response[0]['meanings'][index]['definitions'][0]['definition'])
+        try:
+            print("\nExample: \n" + (str.capitalize(response[0]['meanings'][index]['definitions'][0]['example'])))
+        except:
+            pass
+        try:
+            thestr = ", "
+            final = thestr.join(response[0]['meanings'][0]['definitions'][index]['synonyms'])
+            print("\nsynonyms:")
+            print(final)
+        except:
+            pass
         print()
         index+=1
 

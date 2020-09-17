@@ -1,4 +1,3 @@
-  
 from bot import telegram_chatbot
 import praw
 import re
@@ -9,6 +8,10 @@ import pafy
 import random
 import dateutil.parser
 import wikipedia
+import heart
+
+redditlogic = heart.reddit()
+dictlogic = heart.googledict()
 
 reddit = praw.Reddit(client_id=config.client_id, 
                      client_secret=config.client_secret, 
@@ -17,27 +20,6 @@ reddit = praw.Reddit(client_id=config.client_id,
                      user_agent=config.user_agent)
 
 bot = telegram_chatbot("config.cfg")
-
-exceptiontext = '''Hi!! It looks like an error occurred or something.
-
-Here are the list of commands you can tell me (case sensitive):
-
-1.) new (plus) subreddit of your choice = A list of latest topics from your desired subreddit.
-
-2.) hot (plus) subreddit of your choice = A list of hottest topics from your desired subreddit.
-
-3.) rand (plus) subreddit of your choice = A single, random post from your desired subreddit.
-
-4.) randsubpost = a completely random post from a completely random subreddit.
-
-5.) rising = a completely random "rising" post from a completely random subreddit.
-
-6.) randsubpostnsfw = This might return a N S F W content from a random subreddit. Be warned.
-
-7.) quote = get a completely random quote.
-
-8.) dadjoke = witness a dad joke.'''
-
 
 def listToString(s):
     str1 = "\n \n"
@@ -49,24 +31,26 @@ def make_reply(msg):
 
     if msg is not None:        
         # ==========================QUOTES==================================
-        if msg == "quote":
+        if msg == "quote" or msg == "quotes":
             url = 'https://api.quotable.io/random'
             quote = requests.get(url).json()
 
             reply = quote['content'] + " - " + quote['author']
 
-        # ==========================WORK IN PROGRESS==================
-        #elif "ytdl" in msg:
-        #    msg = msg.replace("ytdl ", "")
-        #    video = pafy.new(msg)
-        #    audio = video.getbestaudio(preftype="m4a")
+        elif "weekc" in msg:    
+            try:
+                msg = msg.replace("weekc ", "")
+                thewik = wikipedia.summary(msg, sentences=5)
+                reply = thewik
+            except:
+                reply = "I can't return it because it's too long or it doesn't exist!! I'm sorry, master. I'll take you there instead."
 
         elif "wiki" in msg:
             msg = msg.replace("wiki ", "")
 
             try:
                 wiki_results = wikipedia.search(msg)
-                text = "Results for: {}".format(msg)
+                text = "Here are the results for: {}: ".format(msg)
                 wikilist = []
                 for results in wiki_results:
                     try:
@@ -75,7 +59,7 @@ def make_reply(msg):
                     except: 
                         pass
 
-                reply = "Here are the results for " + msg + " : " + "\n \n" + listToString(wikilist)
+                reply = text + "\n \n" + listToString(wikilist)
             
             except:
                 pass
@@ -103,11 +87,11 @@ def make_reply(msg):
                         'time': dateutil.parser.parse(d['time'])
                 }"""
                 
-                reply = "Let's hope that the virus ends as soon as possible. Here is the latest report:" + "\n \n" + listToString(disease)
+                reply = "Let's hope that the virus ends as soon as possible. Here is the latest report in the Philippines:" + "\n \n" + listToString(disease)
 
 
             except:
-                reply = exceptiontext
+                reply = heart.exceptiontext
 
         elif msg == "dogs" or msg == "dog" or msg == "doge":
             quotetext = ["Here goes the Doge Barrage!", "Doge: I am the lucid dream. The monster in your nightmares. The fiend of a thousand faces. Just kidding. Can I have my food now?"]
@@ -140,29 +124,13 @@ def make_reply(msg):
         #===========================DICTIONARY SECTION======================
         elif "dict" in msg:
             try:
-                index = 0
                 msg = msg.replace("dict ", "")
                 url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + msg
                 response = requests.get(url).json()
-                mgawords = []
-                mgawords.append(response[0]['word'])
-                mgawords.append(response[0]['phonetics'][0]['text'])
-                while index <= 10:
-                    try:
-                        
-                        mgawords.append(response[0]['meanings'][index]['partOfSpeech'])
-                        mgawords.append(response[0]['meanings'][index]['definitions'][0]['definition'])
-                        index += 1
-
-                    except:
-                        break
-
-                mgawords.append(response[0]['phonetics'][0]['audio'])
-
+                mgawords = dictlogic.parsetext(response)
                 reply = "I guess this is what yer looking for. " + "\n \n" + listToString(mgawords)
-
             except:
-                reply = exceptiontext
+                reply = heart.exceptiontext
 
         #====================REDDIT SECTION==========================
         elif msg == "rising":
@@ -173,7 +141,7 @@ def make_reply(msg):
                     reply = subs.title + "\n \n" + subs.selftext + "\n" + subs.url
 
             except:
-                reply = exceptiontext
+                reply = heart.exceptiontext
 
         elif msg == "randsubpost":
             try:
@@ -182,7 +150,7 @@ def make_reply(msg):
                 reply = submission.title + "\n" + submission.selftext + "\n" + submission.url
 
             except:
-                reply = exceptiontext
+                reply = heart.exceptiontext
 
         elif msg == "randsubpostnsfw":
             try:
@@ -191,7 +159,7 @@ def make_reply(msg):
                 reply = submission.title + "\n" + submission.selftext + "\n" + submission.url
 
             except:
-                reply = exceptiontext
+                reply = heart.exceptiontext
 
         elif "rand" in msg:
             try:
@@ -201,52 +169,32 @@ def make_reply(msg):
 
 
             except:
-                reply = exceptiontext
+                reply = heart.exceptiontext
 
         elif "new" in msg:
             try:
                 msg = msg.replace("new ", "")
                 subreddit = reddit.subreddit(msg)
                 new = subreddit.new(limit=5)
-                redlist = []
-
-                for index, submission in enumerate(new, start=1):
-                    redlist.append(str(index) + "). " + submission.title)
-                    if(submission.selftext == ""):
-                        pass
-                    else:
-                        redlist.append("- " + submission.selftext)
-                    redlist.append(submission.url)
-
+                redlist = redditlogic.hotornew(new)
                 reply = "Here are the newest topics at " + msg + " : " + "\n \n" + listToString(redlist)
 
             except:
-                reply = exceptiontext
+                reply = heart.exceptiontext
 
         elif "hot" in msg:
             try:
                 msg = msg.replace("hot ", "")
                 subreddit = reddit.subreddit(msg)
                 hot = subreddit.hot(limit=5)
-                redlist = []
-                
-                for index, submission in enumerate(hot, start=1):
-                    redlist.append(str(index) + ".) " + submission.title)
-
-                    if(submission.selftext == ""):
-                        pass
-                    else:
-                        redlist.append("- " + submission.selftext)
-
-                    redlist.append(submission.url)
-
+                redlist = redditlogic.hotornew(hot)
                 reply = "Here are the hottest topics at " + msg + " : " + "\n \n" + listToString(redlist)
 
             except:
-                reply = exceptiontext
+                reply = heart.exceptiontext
 
         else:
-            reply = exceptiontext
+            reply = heart.exceptiontext
 
     return reply
 
