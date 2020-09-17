@@ -37,13 +37,34 @@ def make_reply(msg):
 
             reply = quote['content'] + " - " + quote['author']
 
+        elif "weder" in msg:
+            try:
+                msg = msg.replace("weder ", "")
+                url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=1b453b589a0691c857ddc95f0921df69'
+                city = msg
+
+                r = requests.get(url.format(city)).json()
+                temperature = str(r['main']['temp'])
+                description = r['weather'][0]['description'].capitalize()
+                if float(temperature) < 30.00:
+                    flavor = "Better get those blankets ready. Chilly chilly brrrrrt brrrrrt!"
+                
+                elif float(temperature) > 30.00:
+                    flavor = "Hot hot hot! Better get an umbrella or get em fans in full throttle >:)"
+
+                reply = "The weather for today in {} is: \n\n".format(city) + "Temperature: " + temperature + ", " + description + "\n\n" + flavor
+
+            except:
+                reply = "Oof. It looks like an error occurred."
+
         elif "weekc" in msg:    
             try:
                 msg = msg.replace("weekc ", "")
                 thewik = wikipedia.summary(msg, sentences=5)
-                reply = thewik
+                thelink = wikipedia.page(msg)
+                reply = thewik + "\n\nLink/Read More: " + thelink.url
             except:
-                reply = "I can't return it because it's too long or it doesn't exist!! I'm sorry, master. I'll take you there instead."
+                reply = "I can't return it because maybe the summary's too long, the query is ambiguous, or it doesn't exist!! I'm sorry, master."
 
         elif "wiki" in msg:
             msg = msg.replace("wiki ", "")
