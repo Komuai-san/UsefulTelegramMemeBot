@@ -1,6 +1,6 @@
 import requests
 import json
-
+import random
 import base64
 topics = "Burat"
 response = requests.get("https://source.unsplash.com/random?{0}".format(topics))
@@ -8,13 +8,37 @@ response = requests.get("https://source.unsplash.com/random?{0}".format(topics))
 #r = requests.get('http://memebuild.com/api/1.0/getRecentMemes').json()
 #print(r)
 
+url = 'https://api.thesneakerdatabase.com/v1/sneakers'
+params = {'limit': '100', 'gender': 'women'}
+shoes = requests.request("GET", url, params=params).json()
+numba = random.randint(1, 100)
 
-imagedata = base64.b64decode(response.content)
-filename = 'shit.jpg'
+#print(r['results'][0]['media']['imageUrl'])
 
-with open(filename, 'wb') as f:
-    f.write(imagedata)
+"""def randshoes(numb):
+    shoelist = []
+    shoelist.append(r['results'][numb]['name'])
+    shoelist.append(r['results'][numb]['brand'])
+    shoelist.append(r['results'][numb]['colorway'])
+    shoelist.append("$"+ (str(r['results'][numb]['retailPrice'])))
+    shoelist.append(r['results'][numb]['shoe'])
+        
+    return shoelist
+
+a = randshoes(numba)
+print(a)"""
+    
+shoeslist = []
+shoeslist.append("Name: " + shoes['results'][numba]['title'])
+shoeslist.append("Brand Name: " + shoes['results'][numba]['brand'])
+shoeslist.append("Colours: " + shoes['results'][numba]['colorway'])
+shoeslist.append("Date Released:" + shoes['results'][numba]['releaseDate'])
+shoeslist.append("Price: $" + str(shoes['results'][numba]['retailPrice']))
+if shoes['results'][numba]['media']['imageUrl'] == None:
+    shoeslist.append("This one doesn't have an image from the database. Sorry.")
+else:
+    shoeslist.append("Image: " + shoes['results'][numba]['media']['imageUrl'])
 
 
 
-
+print(shoeslist)

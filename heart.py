@@ -1,6 +1,6 @@
 import requests
 import json
-
+import random
 
 #===============================HELPTEXT===============================
 
@@ -100,6 +100,34 @@ class googledict:
 
         return mgawords
 
+class sneakerfever:
+    def __init__(self):
+        pass
+    
+    def getShoes(self, gender):
+        if gender == "mshoes":
+            gender = 'men'
+
+        elif gender == "wshoes":
+            gender = 'women'
+
+        url = 'https://api.thesneakerdatabase.com/v1/sneakers'
+        params = { 'limit': '100', 'gender': gender }
+        shoes = requests.request("GET", url, params=params).json()
+        shoeslist = []
+        numba = random.randint(1, 100)
+
+        shoeslist.append("Name: " + shoes['results'][numba]['title'])
+        shoeslist.append("Brand Name: " + shoes['results'][numba]['brand'])
+        shoeslist.append("Colours: " + shoes['results'][numba]['colorway'])
+        shoeslist.append("Date Released: " + shoes['results'][numba]['releaseDate'])
+        shoeslist.append("Price: $" + str(shoes['results'][numba]['retailPrice']))
+        if shoes['results'][numba]['media']['imageUrl'] == None:
+            shoeslist.append("This one doesn't have an image from the database. Sorry.")
+        else:
+            shoeslist.append("Image: " + shoes['results'][numba]['media']['imageUrl'])
+
+        return shoeslist
 
 
 # ==========================WORK IN PROGRESS==================

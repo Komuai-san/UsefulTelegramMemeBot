@@ -12,6 +12,7 @@ import heart
 
 redditlogic = heart.reddit()
 dictlogic = heart.googledict()
+sneakers = heart.sneakerfever()
 
 reddit = praw.Reddit(client_id=config.client_id, 
                      client_secret=config.client_secret, 
@@ -36,6 +37,24 @@ def make_reply(msg):
             quote = requests.get(url).json()
 
             reply = quote['content'] + " - " + quote['author']
+
+        
+        elif msg == "mshoes":
+            try:
+                shoeslist = sneakers.getShoes(msg)
+                reply = "Here's a random pair of men's shoes that might pique your interest. 😎" + '\n\n' + listToString(shoeslist)
+
+            except:
+                reply = heart.exceptiontext
+                
+        elif msg == "wshoes":
+            try:
+                shoeslist = sneakers.getShoes(msg)
+                reply = "Here's a random pair of women's shoes that might pique your interest. 😎" + '\n\n' + listToString(shoeslist)
+
+            except:
+                reply = heart.exceptiontext
+
 
         elif "unsplash" in msg:
             try:
