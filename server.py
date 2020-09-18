@@ -44,16 +44,16 @@ def make_reply(msg):
                 shoeslist = sneakers.getShoes(msg)
                 reply = "Here's a random pair of men's shoes that might pique your interest. 😎" + '\n\n' + listToString(shoeslist)
 
-            except:
-                reply = heart.exceptiontext
-                
+            except Exception as e:
+                reply = e
+
         elif msg == "wshoes":
             try:
                 shoeslist = sneakers.getShoes(msg)
                 reply = "Here's a random pair of women's shoes that might pique your interest. 😎" + '\n\n' + listToString(shoeslist)
 
-            except:
-                reply = heart.exceptiontext
+            except Exception as e:
+                reply = e
 
 
         elif "unsplash" in msg:

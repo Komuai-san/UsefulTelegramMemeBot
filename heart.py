@@ -1,7 +1,7 @@
 import requests
 import json
 import random
-
+import datetime
 #===============================HELPTEXT===============================
 
 mainhelp = """Hi there! To know about the commands for specific tasks, kindly type one of these (without the quotation marks.)
@@ -115,17 +115,57 @@ class sneakerfever:
         params = { 'limit': '100', 'gender': gender }
         shoes = requests.request("GET", url, params=params).json()
         shoeslist = []
-        numba = random.randint(1, 100)
+        numba = random.randint(1, 101)
+        price = str(shoes['results'][numba]['retailPrice'])
+        imgurl = shoes['results'][numba]['media']['imageUrl']
+        shoename = shoes['results'][numba]['title']
+        release = shoes['results'][numba]['releaseDate'].replace(" 23:59:59", "").split("-")
+        converted = datetime.date(int(release[0]), int(release[1]), int(release[2]))
+        thetime = converted.strftime("%B %d, %Y, %A")
+
 
         shoeslist.append("Name: " + shoes['results'][numba]['title'])
         shoeslist.append("Brand Name: " + shoes['results'][numba]['brand'])
         shoeslist.append("Colours: " + shoes['results'][numba]['colorway'])
-        shoeslist.append("Date Released: " + shoes['results'][numba]['releaseDate'])
-        shoeslist.append("Price: $" + str(shoes['results'][numba]['retailPrice']))
-        if shoes['results'][numba]['media']['imageUrl'] == None:
-            shoeslist.append("This one doesn't have an image from the database. Sorry.")
+        shoeslist.append("Date Released: " + thetime)
+
+        if price == "None":
+            price = ""
+            shoeslist.append("Price: Nope. No price indicated in the database.")
+
         else:
-            shoeslist.append("Image: " + shoes['results'][numba]['media']['imageUrl'])
+            shoeslist.append("Price: $" + price)
+        
+        if imgurl is None:
+            try:
+                imgurl = ""
+                query = shoename
+                r = requests.get("https://api.qwant.com/api/search/images", params={'count': 50, 'q': query, 't': 'images', 'safesearch': 1, 'locale': 'en_US', 'uiv': 4 }, headers={ 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' })
+                response = r.json().get('data').get('result').get('items')
+                urls = [r.get('media') for r in response]
+                shoeslist.append("Image: " + urls[1])
+
+            except:
+                shoeslist.append("There's no image in the database, and the alternative image source I am using might be dead. Sorry.")
+            
+
+        elif shoes['results'][numba]['media']['imageUrl'] == "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill":
+            try:
+                imgurl == ""
+                query = shoename
+                r = requests.get("https://api.qwant.com/api/search/images", params={'count': 50, 'q': query, 't': 'images', 'safesearch': 1, 'locale': 'en_US', 'uiv': 4 }, headers={ 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36' })
+                response = r.json().get('data').get('result').get('items')
+                urls = [r.get('media') for r in response]
+                shoeslist.append("Image: " + random.choice(urls))
+            except:
+                shoeslist.append("There's no image in the database, and the alternative image source I am using might be dead. Sorry.")
+
+        else:
+            if imgurl == "":
+                pass
+
+            else:
+                shoeslist.append("Image: " + imgurl)
 
         return shoeslist
 
