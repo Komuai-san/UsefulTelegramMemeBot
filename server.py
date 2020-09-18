@@ -195,7 +195,7 @@ def make_reply(msg):
             try:
                 msg = msg.replace("rand ", "")
                 submission = reddit.subreddit(msg).random()
-                reply = submission.title + "\n" + submission.selftext + "\n" + submission.url
+                reply = submission.title + "\n\n" + submission.selftext + "\n\n" + submission.url
 
 
             except:
