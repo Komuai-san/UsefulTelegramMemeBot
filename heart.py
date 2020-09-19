@@ -4,7 +4,7 @@ import random
 import datetime
 #===============================HELPTEXT===============================
 
-mainhelp = """Hi there! This might be an introduction, or there might be an error. To know about the commands for specific tasks, kindly type one of these (without the quotation marks.)
+mainhelp = """Hi there! This might be an introduction, or there might be an error (whatever). To know about the commands for specific tasks, kindly type one of these (without the quotation marks.)
 
 1.) 'help' for serious functions (wiki, dictionary with audio, quotes, local coronavirus information, sneaker shoe informer). Like, things that Google can already do 🙄
 
@@ -19,8 +19,6 @@ mainhelp = """Hi there! This might be an introduction, or there might be an erro
 6.) 'proj' to see the source code of this bot.
 
 I will add 9gag scraper in the future if Reddit is not enough. Lol.
-
-If you have any concern, kindly let me know here @Komuai .
 
 """
 
@@ -45,6 +43,7 @@ usefulhelp = """ Here are the useful commands.
 8.) 'unsplash' + anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
 
 9.) 'quote' = Shows a random quote from famous figures.
+
 """
 
 fun = """ Commands to summon the funny:
@@ -54,6 +53,7 @@ fun = """ Commands to summon the funny:
 2.) 'dogs' or 'dog' or 'doge' = Returns a random image of a dog in jpg or gif. I believe it'll cheer anyone up.
 
 3.) 'dadjoke' = self-explanatory.
+
 """
 
 exceptiontext = '''Hi!! Here's the commands you can use to see some Reddit content.
@@ -74,9 +74,14 @@ Here are the list of commands you can tell me (case sensitive):
 
 '''
 
-botan = """  """
+#==========================GARDEN OF RANDOMNESS================================
+botan = """So you've chosen to visit my parlor.
+1.) 'mtext' = To get a random story, lame joke, musings, or book quote from the creator of this junkyard bot.
+2.)  'mot' = motivation. 
+3.) 'rlist = To know my reading list. 
+"""
 
-
+rlist = []
 
 #===============================FUNCTIONS==============================
 class reddit:
@@ -157,7 +162,7 @@ class sneakerfever:
         params = { 'limit': '100', 'gender': gender }
         shoes = requests.request("GET", url, params=params).json()
         shoeslist = []
-        numba = random.randint(1, 101)
+        numba = random.randint(1, 100)
         price = str(shoes['results'][numba]['retailPrice'])
         imgurl = shoes['results'][numba]['media']['imageUrl']
         shoename = shoes['results'][numba]['title']
@@ -170,15 +175,17 @@ class sneakerfever:
         shoeslist.append("Brand Name: " + shoes['results'][numba]['brand'])
         shoeslist.append("Colours: " + shoes['results'][numba]['colorway'])
         shoeslist.append("Date Released: " + thetime)
-
+        
         if price == "None":
             price = ""
             shoeslist.append("Price: Nope. No price indicated in the database.")
 
         else:
             shoeslist.append("Price: $" + price)
+
+        shoeslist.append("Image: " + imgurl)
         
-        if imgurl is None:
+        """if imgurl is None:
             try:
                 imgurl = ""
                 query = shoename
@@ -207,7 +214,7 @@ class sneakerfever:
                 pass
 
             else:
-                shoeslist.append("Image: " + imgurl)
+                """
 
         return shoeslist
 

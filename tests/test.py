@@ -29,3 +29,7 @@ dt = "2013-08-25 23:59:59"
 thedate = dt.replace(" 23:59:59", "").split("-")
 print(thedate)
 thedate1 = thedate[0] + thedate[1] + thedate[2]
+
+thelist = ["""Mark Anthony Cruz
+Disappointment"""]
+print(thelist)

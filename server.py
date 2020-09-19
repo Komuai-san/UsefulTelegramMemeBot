@@ -38,6 +38,10 @@ def make_reply(msg):
 
             reply = quote['content'] + " - " + quote['author']
 
+        #===========================HELPTEXTS===============================
+        elif msg == "proj":
+            reply = "Here's the details of my project in GitHub: " + heart.projectlink
+
         
         elif msg == "mshoes":
             flavorlist = ["Here's a random pair of men's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 "]
@@ -46,8 +50,8 @@ def make_reply(msg):
                 shoeslist = sneakers.getShoes(msg)
                 reply = toptext + '\n\n' + listToString(shoeslist)
 
-            except Exception as e:
-                reply = e
+            except:
+                reply = "Oof. Sorry. Looks like something went wrong. This doesn't happen often. Try again."
 
         elif msg == "wshoes":
 
@@ -58,7 +62,7 @@ def make_reply(msg):
                 reply = toptext + '\n\n' + listToString(shoeslist)
 
             except Exception as e:
-                reply = e
+                reply = "Oof. Sorry. Looks like something went wrong. This doesn't happen often. Try again."
 
 
         elif "unsplash" in msg:
