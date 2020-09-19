@@ -40,17 +40,22 @@ def make_reply(msg):
 
         
         elif msg == "mshoes":
+            flavorlist = ["Here's a random pair of men's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 "]
+            toptext = random.choice(flavorlist)
             try:
                 shoeslist = sneakers.getShoes(msg)
-                reply = "Here's a random pair of men's shoes that might pique your interest. 😎" + '\n\n' + listToString(shoeslist)
+                reply = toptext + '\n\n' + listToString(shoeslist)
 
             except Exception as e:
                 reply = e
 
         elif msg == "wshoes":
+
+            flavorlist = ["Here's a random pair of women's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 "]
+            toptext = random.choice(flavorlist)
             try:
                 shoeslist = sneakers.getShoes(msg)
-                reply = "Here's a random pair of women's shoes that might pique your interest. 😎" + '\n\n' + listToString(shoeslist)
+                reply = toptext + '\n\n' + listToString(shoeslist)
 
             except Exception as e:
                 reply = e
@@ -172,14 +177,16 @@ def make_reply(msg):
 
         #===========================DICTIONARY SECTION======================
         elif "dict" in msg:
+            flavorlist = ["I guess this is what yer looking for. 🤔 ", '"Mga Words" 📚 ', "That seems like a hard word. 🧠 " ]
+            toptext = random.choice(flavorlist)
             try:
                 msg = msg.replace("dict ", "")
                 url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + msg
                 response = requests.get(url).json()
                 mgawords = dictlogic.parsetext(response)
-                reply = "I guess this is what yer looking for. " + "\n \n" + listToString(mgawords)
-            except:
-                reply = heart.exceptiontext
+                reply = toptext + "\n \n" + listToString(mgawords)
+            except Exception as e:
+                reply = e
 
         #====================REDDIT SECTION==========================
         elif msg == "rising":

@@ -82,12 +82,22 @@ class googledict:
                 str1 = ", "
                 mgawords.append(response[0]['meanings'][index]['partOfSpeech'])
                 mgawords.append(response[0]['meanings'][index]['definitions'][0]['definition'])
-                try:
-                    mgawords.append("synonyms: \n" + str1.join(response[0]['meanings'][0]['definitions'][index]['synonyms']))
+                try: 
+                    mgawords.append("-" + response[0]['meanings'][index]['definitions'][1]['definition'])
                 except:
-                    mgawords.append("synonyms: nope. source didn't return anything.")
+                    pass
+                
                 try:
-                    mgawords.append("\nExample: \n" + (str.capitalize(response[0]['meanings'][index]['definitions'][0]['example'])))
+                    mgawords.append("-" + response[0]['meanings'][index]['definitions'][2]['definition'])
+                except:
+                    pass
+
+                try:
+                    mgawords.append("synonyms: \n\n" +  str1.join(response[0]['meanings'][0]['definitions'][index]['synonyms']))
+                except:
+                    mgawords.append("synonyms: Nope. source didn't return anything.")
+                try:
+                    mgawords.append("\nExample: \n\n" + "-" + (str.capitalize(response[0]['meanings'][index]['definitions'][0]['example'])))
                 except:
                     mgawords.append("Example: N/A")
 
@@ -96,7 +106,7 @@ class googledict:
             except:
                 break
 
-            mgawords.append(response[0]['phonetics'][0]['audio'])
+        mgawords.append(response[0]['phonetics'][0]['audio'])
 
         return mgawords
 
