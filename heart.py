@@ -4,28 +4,59 @@ import random
 import datetime
 #===============================HELPTEXT===============================
 
-mainhelp = """Hi there! To know about the commands for specific tasks, kindly type one of these (without the quotation marks.)
+mainhelp = """Hi there! This might be an introduction, or there might be an error. To know about the commands for specific tasks, kindly type one of these (without the quotation marks.)
 
-1.) help for serious functions (wiki, dictionary with audio, quotes, local coronavirus information)
-2.) red for Reddit functions. (e.g. random subreddits, hot/new topics)
-3.) fun for the fun stuff. (cats, dogs, dad jokes)
-4.) botan to access my Botanical Gardens of Seething Hatred.
+1.) 'help' for serious functions (wiki, dictionary with audio, quotes, local coronavirus information, sneaker shoe informer). Like, things that Google can already do 🙄
 
+2.) 'red' for Reddit functions. (e.g. random subreddits, hot/new topics)
+
+3.) 'fun' for the fun stuff. (cats, dogs, dad jokes)
+
+4.) 'botan' to access my Botanical Gardens of Randomness.
+
+5.) 'main' to summon this text guide again.
+
+6.) 'proj' to see the source code of this bot.
+
+I will add 9gag scraper in the future if Reddit is not enough. Lol.
+
+If you have any concern, kindly let me know here @Komuai .
 
 """
 
 projectlink = 'https://github.com/Komuai-san/UsefulTelegramMemeBot'
 
-wikihelp = """'wiki' + anything you want to search = Returns a list of wiki links related to your query. (takes some time but does the job.)
-weekc + Anything you want to search = Returns a long-ass(depends) summary on the subject. This is experimental and would not return anything if summary is really long. I will tell you if that's the case.
+usefulhelp = """ Here are the useful commands.
+
+1.) 'wiki' + Anything you want to search = Returns a list of wiki links related to your query. (takes some time but does the job.)
+
+2.) 'weekc' + Anything you want to search = Returns a long-ass(depends) summary on the subject. This is experimental and would not return anything if summary is really long. I will tell you if that's the case.
+
+3.) 'mshoes' = Randomly shows you a pair of shoes for men with its title, price in dollars, release date, and if possible, an image of it. I've seen an awesome pair here! It looks rad!! (Nike Air Force 1 with a Chinese name)
+
+4.) 'wshoes' = Same thing, but it shows a pair of shoes for women.
+
+5.) 'dict' + the word = Shows you the definition of the word with example, synonym, and audio file.
+
+6.) 'corona' = To know about the corona cases in the Philippines.
+
+7.) 'weder' + city/country = To know the current weather.
+
+8.) 'unsplash' + anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
+
+9.) 'quote' = Shows a random quote from famous figures.
 """
 
-fun = """cats or cat = Returns a random image of a cat in jpg or gif. I really love cats you know.
-dogs or dog or doge = Returns a random image of a dog in jpg or gif. I believe it'll cheer anyone up.
+fun = """ Commands to summon the funny:
 
+1.) 'cats' or 'cat' = Returns a random image of a cat in jpg or gif. I really love cats you know.
+
+2.) 'dogs' or 'dog' or 'doge' = Returns a random image of a dog in jpg or gif. I believe it'll cheer anyone up.
+
+3.) 'dadjoke' = self-explanatory.
 """
 
-exceptiontext = '''Hi!! It looks like an error occurred or something.
+exceptiontext = '''Hi!! Here's the commands you can use to see some Reddit content.
 
 Here are the list of commands you can tell me (case sensitive):
 
@@ -39,11 +70,12 @@ Here are the list of commands you can tell me (case sensitive):
 
 5.) rising = a completely random "rising" post from a completely random subreddit.
 
-6.) randsubpostnsfw = This might return a N S F W content from a random subreddit. Be warned.
+6.) randsubpostnsfw 
 
-7.) quote = get a completely random quote.
+'''
 
-8.) dadjoke = witness a dad joke.'''
+botan = """  """
+
 
 
 #===============================FUNCTIONS==============================
