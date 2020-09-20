@@ -9,6 +9,9 @@ import random
 import dateutil.parser
 import wikipedia
 import heart
+import html2text
+import bs4
+import html_text
 
 redditlogic = heart.reddit()
 dictlogic = heart.googledict()
@@ -24,7 +27,7 @@ bot = telegram_chatbot("config.cfg")
 
 def listToString(s):
     str1 = "\n \n"
-    return (str1.join(s))
+    return (str1.join(s).replace(" & ", " AND "))
 
 
 def make_reply(msg):
@@ -45,6 +48,54 @@ def make_reply(msg):
         elif msg == "rlist":
             reply = random.choice(heart.rlist)
 
+        elif "otor" in msg:
+            msg = msg.replace("otor ", "")
+            booklist = []
+            try:
+                url = 'https://reststop.randomhouse.com/resources/works/?start=0&max=20&expandLevel=1&search={}'.format(msg)
+                books = requests.get(url, headers= {"Accept": "application/json"}).json()
+                index = 0
+
+                while index <= 19:
+                    try:
+                        booklist.append(str(index) + ".) "+ "Title: " + books['work'][index]['titleshort'])
+                        try:
+                            booklist.append("-ISBN: " + books['work'][index]['titles']['isbn'][0]['$'])
+                        except:
+                            booklist.append("-ISBN: None")
+                    except:
+                        break
+                        
+                    index +=1 
+                
+                reply = "Here are the works of the author you've mentioned: \n\n" + listToString(booklist) 
+
+            except: 
+                reply = heart.mainhelp
+
+        elif "bwok" in msg:
+            msg = msg.replace("bwok ", "")
+            try:
+                url = 'https://reststop.randomhouse.com/resources/titles/{}'.format(msg)
+                books = requests.get(url, headers={'Accept': 'application/json'}).json()
+                dummy = books['excerpt']
+                newexcerpt = dummy.split()
+                newlist = []
+
+                for index, x in enumerate(newexcerpt):
+                    if index == 595:
+                        break
+                    else:
+                        newlist.append(x)
+
+                newlist.append("...")
+                f = " "
+                final = f.join(newlist)
+                thebok = final.replace("<br>", "\n").replace("&#160;", " ").replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"').replace("&mdash;", "—").replace("&quot;", '"').replace("<p>","").replace("<i>","").replace("</p>","").replace("</i>","").replace("<strong>", "").replace("<b>", "").replace("</b>", "")
+            
+                reply = thebok
+            except:
+                reply = "Sorry. It seems there's no excerpt for the book you're looking for."
         
         elif msg == "mshoes":
             flavorlist = ["Here's a random pair of men's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 "]

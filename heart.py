@@ -75,7 +75,7 @@ Here are the list of commands you can tell me (case sensitive):
 '''
 
 #==========================GARDEN OF RANDOMNESS================================
-botan = """So you've chosen to visit my parlor.
+botan = """So you've chosen to visit my parlour.
 1.) 'mtext' = To get a random story, lame joke, musings, or book quote from the creator of this junkyard bot.
 2.) 'rlist = To summon my reading list. 
 3.) 'spt' = To get a link of my Spotify playlist
