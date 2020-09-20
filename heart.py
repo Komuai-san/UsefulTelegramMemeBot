@@ -28,9 +28,9 @@ usefulhelp = """ Here are the useful commands.
 
 1.) 'wiki' + Anything you want to search = Returns a list of wiki links related to your query. (takes some time but does the job.)
 
-2.) 'weekc' + Anything you want to search = Returns a long-ass(depends) summary on the subject. This is experimental and would not return anything if summary is really long. I will tell you if that's the case.
+2.) 'weekc' + Anything you want to search = Returns a long-ass(depends) summary on the subject. Most of the time it works as long as the term is disambiguated. This is experimental and would not return anything if summary is really long, or if the search term is ambiguous. I will tell you if that's the case.
 
-3.) 'mshoes' = Randomly shows you a pair of shoes for men with its title, price in dollars, release date, and if possible, an image of it. I've seen an awesome pair here! It looks rad!! (Nike Air Force 1 with a Chinese name)
+3.) 'mshoes' = Randomly shows you a pair of shoes for men with its title, price in dollars, release date, and if possible, an image of it (which is always the case). 
 
 4.) 'wshoes' = Same thing, but it shows a pair of shoes for women.
 
@@ -77,11 +77,18 @@ Here are the list of commands you can tell me (case sensitive):
 #==========================GARDEN OF RANDOMNESS================================
 botan = """So you've chosen to visit my parlor.
 1.) 'mtext' = To get a random story, lame joke, musings, or book quote from the creator of this junkyard bot.
-2.)  'mot' = motivation. 
-3.) 'rlist = To know my reading list. 
+2.) 'rlist = To summon my reading list. 
+3.) 'spt' = To get a link of my Spotify playlist
+4.) 
 """
 
-rlist = []
+rlist = [
+    "Boku wa Mari no Naka - It's my favourite book. It tackles identity and pretty much a coming-of-age manga. Hits close to home sometimes. For a non-bookworm like me, it's one of the deepest I've read lol. https://manganelo.com/manga/boku_wa_mari_no_naka ", 
+    "A Moment in Verse - I don't know if it can be read without any context since it's Warcraft, but I like it! It's about an elf visiting his friend's home city. It's pure cringe and author seemed to try hard in making the sentences complicated, but it just invokes a lot of faint memories whenever I read it. https://worldofwarcraft.com/en-us/story/short-story/a-moment-in-verse "
+    "Wolfsmund - It's a good historical manga!! It' about the Swiss rebellions against the Habsburgs. Fictional, but really brutal in its depiction of life in the Middle Ages. -https://mangakakalot.com/read-ym8ma158524469013",
+    "Ad Astra - Scipio to Hannibal - A classic for a history buff like me. It's a historical fiction about the real feud between Rome and Carthage. It gives a glimpse of Rome's might and structure in its days as a Republic. Unfortunately, it hasn't been updated since ages. https://mangakakalot.com/read-gk5bu158504957996",
+
+    ]
 
 #===============================FUNCTIONS==============================
 class reddit:

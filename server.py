@@ -42,27 +42,33 @@ def make_reply(msg):
         elif msg == "proj":
             reply = "Here's the details of my project in GitHub: " + heart.projectlink
 
+        elif msg == "rlist":
+            reply = random.choice(heart.rlist)
+
         
         elif msg == "mshoes":
             flavorlist = ["Here's a random pair of men's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 "]
             toptext = random.choice(flavorlist)
-            try:
-                shoeslist = sneakers.getShoes(msg)
-                reply = toptext + '\n\n' + listToString(shoeslist)
-
-            except:
-                reply = "Oof. Sorry. Looks like something went wrong. This doesn't happen often. Try again."
+            while True:
+                try:
+                    shoeslist = sneakers.getShoes(msg)
+                    reply = toptext + '\n\n' + listToString(shoeslist)
+                    break
+                except:
+                    continue
+                    
 
         elif msg == "wshoes":
 
             flavorlist = ["Here's a random pair of women's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 "]
             toptext = random.choice(flavorlist)
-            try:
-                shoeslist = sneakers.getShoes(msg)
-                reply = toptext + '\n\n' + listToString(shoeslist)
-
-            except Exception as e:
-                reply = "Oof. Sorry. Looks like something went wrong. This doesn't happen often. Try again."
+            while True:
+                try:
+                    shoeslist = sneakers.getShoes(msg)
+                    reply = toptext + '\n\n' + listToString(shoeslist)
+                    break
+                except:
+                    continue
 
 
         elif "unsplash" in msg:
@@ -72,7 +78,7 @@ def make_reply(msg):
                 r = requests.get(url)
                 reply = r.url
             except:
-                reply = "Oof. Error."
+                reply = "Oof. Error. If you forgot the commands, just type 'main'."
 
         elif "weder" in msg:
             try:
