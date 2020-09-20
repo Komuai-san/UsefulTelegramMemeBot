@@ -26,23 +26,29 @@ projectlink = 'https://github.com/Komuai-san/UsefulTelegramMemeBot'
 
 usefulhelp = """ Here are the useful commands.
 
-1.) 'wiki' + Anything you want to search = Returns a list of wiki links related to your query. (takes some time but does the job.)
+1.) 'wiki' plus Anything you want to search = Returns a list of wiki links related to your query. (takes some time but does the job.)
 
-2.) 'weekc' + Anything you want to search = Returns a long-ass(depends) summary on the subject. Most of the time it works as long as the term is disambiguated. This is experimental and would not return anything if summary is really long, or if the search term is ambiguous. I will tell you if that's the case.
+2.) 'weekc' plus Anything you want to search = Returns a long-ass(depends) summary on the subject. Most of the time it works as long as the term is disambiguated. This is experimental and would not return anything if summary is really long, or if the search term is ambiguous. I will tell you if that's the case.
 
 3.) 'mshoes' = Randomly shows you a pair of shoes for men with its title, price in dollars, release date, and if possible, an image of it (which is always the case). 
 
 4.) 'wshoes' = Same thing, but it shows a pair of shoes for women.
 
-5.) 'dict' + the word = Shows you the definition of the word with example, synonym, and audio file.
+5.) 'bio' plus First name and last name of author = Returns a short information about the author you've entered.
 
-6.) 'corona' = To know about the corona cases in the Philippines.
+6.) 'otor' plus Author's name or full name = Returns a list of an author's written works and their ISBN (or books related to them). It's primed to a maximum of 40 books.
 
-7.) 'weder' + city/country = To know the current weather.
+7.) 'bwok' plus ISBN of the book = Returns an excerpt of the book you're interested in. Search term must be in ISBN. The 'otor' command above can return ISBNs.
 
-8.) 'unsplash' + anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
+7.) 'dict' plus the word = Shows you the definition of the word with example, synonym, and audio file.
 
-9.) 'quote' = Shows a random quote from famous figures.
+8.) 'corona' = To know about the corona cases in the Philippines.
+
+9.) 'weder' plus city/country = To know the current weather.
+
+10.) 'unsplash' plus anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
+
+1.) 'quote' = Shows a random quote from famous figures.
 
 """
 

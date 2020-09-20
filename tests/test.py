@@ -34,18 +34,35 @@ thedate1 = thedate[0] + thedate[1] + thedate[2]
 Disappointment"""]
 print(thelist)'''
 
-query = 'Kawabata'
+"""query = 'Kawabata'
 
 url = 'https://reststop.randomhouse.com/resources/works/?start=20&max=2&expandLevel=1&search={}'.format(query)
 books = requests.get(url, headers= {"Accept": "application/json"}).json()
-index = 0
+index = 0"""
 """while index <=44:
     try:
         
     except:
     index+=1"""
     
-print(books)
+#print(books)
 
 
 #print("Title: " + books['work'][index]['titleshort'] + "\nISBN: " + books['work'][index]['titles']['isbn'][index]['$'])
+
+
+url = 'https://reststop.randomhouse.com/resources/authors?firstName=Sigmund&lastName=Freud'
+books = requests.get(url, headers= {"Accept": "application/json"}).json()
+#print(books['author']['authordisplay'])
+
+index = 0
+
+while index <= 19:
+    try:
+        print(books['author'][index]['spotlight'])
+        break
+    except:
+        index += 1
+
+
+

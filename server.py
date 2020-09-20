@@ -9,7 +9,6 @@ import random
 import dateutil.parser
 import wikipedia
 import heart
-import html2text
 import bs4
 import html_text
 
@@ -41,6 +40,12 @@ def make_reply(msg):
 
             reply = quote['content'] + " - " + quote['author']
 
+        elif msg == "main":
+            reply = heart.mainhelp
+
+        elif msg =="help":
+            reply = heart.usefulhelp
+
         #===========================HELPTEXTS===============================
         elif msg == "proj":
             reply = "Here's the details of my project in GitHub: " + heart.projectlink
@@ -48,15 +53,78 @@ def make_reply(msg):
         elif msg == "rlist":
             reply = random.choice(heart.rlist)
 
+        elif "bio" in msg:
+            msg = msg.replace("bio ", "")
+            name = msg.split()
+            thelist = []
+            namelist = []
+
+
+
+            try:
+                url = 'https://reststop.randomhouse.com/resources/authors?firstName={}&lastName={}'.format(name[0], name[1])
+                books = requests.get(url, headers= {"Accept": "application/json"}).json()
+
+                try:
+                    namelist.append(books['author'][0]['authordisplay'])
+                except:
+                    pass
+
+                try:
+                    namelist.append(books['author'][1]['authordisplay'])
+                except:
+                    namelist.append(books['author']['authordisplay'])
+
+                """try:
+                    thelist.append('Bio: ' + books['author'][0]['spotlight'])
+                except:
+                    pass
+                try:
+                    thelist.append('Bio: ' + books['author'][1]['spotlight'])
+                except:
+                    try:
+                        thelist.append('Bio: ' + books['author']['spotlight'])
+                    except:
+                        thelist.append("The author doesn't have a spotlight, unfortunately.")"""
+                
+                try:
+                    index = 0
+                    while index <=19:
+
+                        try:
+                            thelist.append(books['author']['spotlight'])
+                            break
+
+                        except:
+                            try:
+                                thelist.append(books['author'][index]['spotlight'])
+                                break
+                            except:
+                                index +=1
+
+                except:
+                    thelist.append("I did everything. Sorry.")
+
+
+                f = ""
+                final = f.join(thelist)
+                thebok = final.replace("<br>", "\n").replace("&#160;", " ").replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"').replace("&mdash;", "—").replace("&quot;", '"').replace("<p>","").replace("<i>","").replace("</p>","").replace("</i>","").replace("<strong>", "").replace("<b>", "").replace("</b>", "").replace("&nbsp;", " ").replace(" #", "number ")
+                reply = "Here is the information you're looking for: \n \n" + "Name: "+ random.choice(namelist) + "\n \n" + html_text.extract_text(final).replace("#", "number ")
+                
+                
+            except:
+                reply = "Something might be wrong with the name"
+                
+
         elif "otor" in msg:
             msg = msg.replace("otor ", "")
             booklist = []
             try:
-                url = 'https://reststop.randomhouse.com/resources/works/?start=0&max=20&expandLevel=1&search={}'.format(msg)
+                url = 'https://reststop.randomhouse.com/resources/works/?start=0&max=40&expandLevel=1&search={}'.format(msg)
                 books = requests.get(url, headers= {"Accept": "application/json"}).json()
                 index = 0
 
-                while index <= 19:
+                while index <= 39:
                     try:
                         booklist.append(str(index) + ".) "+ "Title: " + books['work'][index]['titleshort'])
                         try:
@@ -91,7 +159,7 @@ def make_reply(msg):
                 newlist.append("...")
                 f = " "
                 final = f.join(newlist)
-                thebok = final.replace("<br>", "\n").replace("&#160;", " ").replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"').replace("&mdash;", "—").replace("&quot;", '"').replace("<p>","").replace("<i>","").replace("</p>","").replace("</i>","").replace("<strong>", "").replace("<b>", "").replace("</b>", "")
+                thebok = final.replace("<br>", "\n").replace("&#160;", " ").replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"').replace("&mdash;", "—").replace("&quot;", '"').replace("<p>","").replace("<i>","").replace("</p>","").replace("</i>","").replace("<strong>", "").replace("<b>", "").replace("</b>", "").replace("&nbsp;", " ")
             
                 reply = thebok
             except:
@@ -111,7 +179,7 @@ def make_reply(msg):
 
         elif msg == "wshoes":
 
-            flavorlist = ["Here's a random pair of women's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 "]
+            flavorlist = ["Here's a random pair of women's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 ", "Nice set stompers. I wonder why they don't sell greaves anymore?"]
             toptext = random.choice(flavorlist)
             while True:
                 try:
