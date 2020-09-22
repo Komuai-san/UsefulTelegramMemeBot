@@ -1,6 +1,8 @@
 import requests
 import json
 import datetime
+import pafy
+import shorten_url 
 """import random
 unsortedlist = []
 newlist = []
@@ -51,7 +53,7 @@ index = 0"""
 #print("Title: " + books['work'][index]['titleshort'] + "\nISBN: " + books['work'][index]['titles']['isbn'][index]['$'])
 
 
-url = 'https://reststop.randomhouse.com/resources/authors?firstName=Sigmund&lastName=Freud'
+"""url = 'https://reststop.randomhouse.com/resources/authors?firstName=Sigmund&lastName=Freud'
 books = requests.get(url, headers= {"Accept": "application/json"}).json()
 #print(books['author']['authordisplay'])
 
@@ -62,7 +64,12 @@ while index <= 19:
         print(books['author'][index]['spotlight'])
         break
     except:
-        index += 1
+        index += 1"""
 
+msg = 'https://www.youtube.com/watch?v=tAk2CErpo6o'
+video = pafy.new(msg)
+audio = video.getbestaudio(preftype="m4a")
+url = shorten_url.short(audio.url)
+print(url)
 
 

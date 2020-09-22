@@ -6,7 +6,7 @@ import html2text
 headers =  { 'Accept': 'application/json' }
 thejoke = requests.request("GET", url, headers=headers).json()
 print(thejoke['joke'])"""
-query = 'Franz Kafka'
+query = 'Mishima'
 
 url = 'https://reststop.randomhouse.com/resources/works/?start=0&max=20&expandLevel=1&search={}'.format(query)
 books = requests.get(url, headers= {"Accept": "application/json"}).json()

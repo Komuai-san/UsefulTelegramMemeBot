@@ -245,13 +245,13 @@ customtext= [
     "Sorry for always making you upset.",
     "My creator's not really in a good shape.",
     "Give me a song."
-    "https://www.youtube.com/watch?v=tAk2CErpo6o",
+    "https://www.youtube.com/watch?v=tAk2CErpo6o".upper(),
     "Give me a song."
-    "https://www.youtube.com/watch?v=ZXu6q-6JKjA",
+    "https://www.youtube.com/watch?v=ZXu6q-6JKjA".upper(),
     "Give me a song.",
-    "https://www.youtube.com/watch?v=K7bZu_5OBs0",
+    "https://www.youtube.com/watch?v=K7bZu_5OBs0".upper(),
     "Give me a book.",
-    "This is one of my favourites. https://mangakakalot.com/read-dg9wm158504869776",
+    "This is one of my favourites. https://mangakakalot.com/read-dg9wm158504869776".upper(),
     "Give me a book.",
     "Based on the trying times of the Roman Republic! https://mangakakalot.com/read-gk5bu158504957996",
     "Give me a book.",

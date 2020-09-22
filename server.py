@@ -14,6 +14,7 @@ import html_text
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
 import json
+import shorten_url
 
 deta = []
 talks = json.loads(open('talks.json', 'r').read())
@@ -194,7 +195,17 @@ def make_reply(msg):
                     break
                 except:
                     continue
-                    
+        
+        elif "ytdl" in msg:
+            try:
+                msg = msg.replace("ytdl ", "")
+                msg = 'https://www.youtube.com/watch?v=tAk2CErpo6o'
+                video = pafy.new(msg)
+                audio = video.getbestaudio(preftype="m4a")
+                url = shorten_url.short(audio.url)
+                reply = url
+            except:
+                heart.mainhelp
 
         elif msg == "wshoes":
 
