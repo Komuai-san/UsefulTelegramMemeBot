@@ -155,7 +155,7 @@ def make_reply(msg):
                         
                     index +=1 
                 
-                reply = "Here are the works of the author you've mentioned: \n\n" + listToString(booklist) 
+                reply = "Here are the works of the author you've mentioned: \n\n" + listToString(booklist).replace(" &", " and ").replace(" & ", " and ")
 
             except: 
                 reply = heart.mainhelp
@@ -178,7 +178,7 @@ def make_reply(msg):
                 newlist.append("...")
                 f = " "
                 final = f.join(newlist)
-                thebok = final.replace("<br>", "\n").replace("&#160;", " ").replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"').replace("&mdash;", "—").replace("&quot;", '"').replace("<p>","").replace("<i>","").replace("</p>","").replace("</i>","").replace("<strong>", "").replace("<b>", "").replace("</b>", "").replace("&nbsp;", " ").replace(" &", " and ")
+                thebok = final.replace("<br>", "\n").replace("&#160;", " ").replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"').replace("&mdash;", "—").replace("&quot;", '"').replace("<p>","").replace("<i>","").replace("</p>","").replace("</i>","").replace("<strong>", "").replace("<b>", "").replace("</b>", "").replace("&nbsp;", " ").replace(" &", " and ").replace(" & ", " and ")
             
                 reply = thebok
             except:
