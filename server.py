@@ -178,7 +178,7 @@ def make_reply(msg):
                 newlist.append("...")
                 f = " "
                 final = f.join(newlist)
-                thebok = final.replace("<br>", "\n").replace("&#160;", " ").replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"').replace("&mdash;", "—").replace("&quot;", '"').replace("<p>","").replace("<i>","").replace("</p>","").replace("</i>","").replace("<strong>", "").replace("<b>", "").replace("</b>", "").replace("&nbsp;", " ")
+                thebok = final.replace("<br>", "\n").replace("&#160;", " ").replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"').replace("&mdash;", "—").replace("&quot;", '"').replace("<p>","").replace("<i>","").replace("</p>","").replace("</i>","").replace("<strong>", "").replace("<b>", "").replace("</b>", "").replace("&nbsp;", " ").replace(" &", " and ")
             
                 reply = thebok
             except:
