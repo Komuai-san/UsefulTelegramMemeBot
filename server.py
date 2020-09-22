@@ -65,6 +65,9 @@ def make_reply(msg):
         elif msg =="help":
             reply = heart.usefulhelp
 
+        elif msg =="red":
+            reply = heart.exceptiontext
+
         #===========================HELPTEXTS===============================
         elif msg == "proj":
             reply = "Here's the details of my project in GitHub: " + heart.projectlink
@@ -293,7 +296,7 @@ def make_reply(msg):
 
 
             except:
-                reply = heart.exceptiontext
+                reply = heart.mainhelp
 
         elif msg == "dogs" or msg == "dog" or msg == "doge":
             quotetext = ["Here goes the Doge Barrage!", "Doge: I am the lucid dream. The monster in your nightmares. The fiend of a thousand faces. Just kidding. Can I have my food now?"]
@@ -345,7 +348,7 @@ def make_reply(msg):
                     reply = subs.title + "\n \n" + subs.selftext + "\n" + subs.url
 
             except:
-                reply = heart.exceptiontext
+                reply = heart.mainhelp
 
         elif msg == "randsubpost":
             try:
@@ -354,7 +357,7 @@ def make_reply(msg):
                 reply = submission.title + "\n" + submission.selftext + "\n" + submission.url
 
             except:
-                reply = heart.exceptiontext
+                reply = heart.mainhelp
 
         elif msg == "randsubpostnsfw":
             try:
@@ -363,7 +366,7 @@ def make_reply(msg):
                 reply = submission.title + "\n" + submission.selftext + "\n" + submission.url
 
             except:
-                reply = heart.exceptiontext
+                reply = heart.mainhelp
 
         elif "rand" in msg:
             try:
@@ -373,7 +376,7 @@ def make_reply(msg):
 
 
             except:
-                reply = heart.exceptiontext
+                reply = heart.mainhelp
 
         elif "new" in msg:
             try:
@@ -384,7 +387,7 @@ def make_reply(msg):
                 reply = "Here are the newest topics at " + msg + " : " + "\n \n" + listToString(redlist)
 
             except:
-                reply = heart.exceptiontext
+                reply = heart.mainhelp
 
         elif "hot" in msg:
             try:
@@ -395,7 +398,7 @@ def make_reply(msg):
                 reply = "Here are the hottest topics at " + msg + " : " + "\n \n" + listToString(redlist)
 
             except:
-                reply = heart.exceptiontext
+                reply = heart.mainhelp
 
         else:
             try:

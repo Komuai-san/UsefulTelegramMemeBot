@@ -12,11 +12,9 @@ mainhelp = """Hi there! This might be an introduction, or there might be an erro
 
 3.) 'fun' for the fun stuff. (cats, dogs, dad jokes)
 
-4.) 'botan' to access my Botanical Gardens of Randomness.
+4.) 'main' to summon this text guide again.
 
-5.) 'main' to summon this text guide again.
-
-6.) 'proj' to see the source code of this bot.
+5.) 'proj' to see the source code of this bot.
 
 I will add 9gag scraper in the future if Reddit is not enough. Lol.
 
@@ -81,7 +79,7 @@ Here are the list of commands you can tell me (case sensitive):
 '''
 
 #==========================GARDEN OF RANDOMNESS================================
-botan = """So you've chosen to visit my parlour.
+'''botan = """So you've chosen to visit my parlour.
 1.) 'mtext' = To get a random story, lame joke, musings, or book quote from the creator of this junkyard bot.
 2.) 'rlist = To summon my reading list. 
 3.) 'spt' = To get a link of my Spotify playlist
@@ -94,7 +92,7 @@ rlist = [
     "Wolfsmund - It's a good historical manga!! It' about the Swiss rebellions against the Habsburgs. Fictional, but really brutal in its depiction of life in the Middle Ages. -https://mangakakalot.com/read-ym8ma158524469013",
     "Ad Astra - Scipio to Hannibal - A classic for a history buff like me. It's a historical fiction about the real feud between Rome and Carthage. It gives a glimpse of Rome's might and structure in its days as a Republic. Unfortunately, it hasn't been updated since ages. https://mangakakalot.com/read-gk5bu158504957996",
 
-    ]
+    ]'''
 
 #===============================FUNCTIONS==============================
 class reddit:
@@ -241,11 +239,24 @@ class sneakerfever:
 customtext= [
     "What's your name?",
     "My name is Mark. A fragment of his soul, perhaps?",
-    "Am I real?",
-    "I hope you're doing fine!",
+    "How are you?",
+    "Good! I hope you're doing fine!",
     "You're annoying.",
     "Sorry for always making you upset.",
     "My creator's not really in a good shape.",
-    "Can I inquire about CCTV?",
-    "I have notified the owner. I'll get back to you right away."
+    "Give me a song."
+    "https://www.youtube.com/watch?v=tAk2CErpo6o",
+    "Give me a song."
+    "https://www.youtube.com/watch?v=ZXu6q-6JKjA",
+    "Give me a song.",
+    "https://www.youtube.com/watch?v=K7bZu_5OBs0",
+    "Give me a book.",
+    "This is one of my favourites. https://mangakakalot.com/read-dg9wm158504869776",
+    "Give me a book.",
+    "Based on the trying times of the Roman Republic! https://mangakakalot.com/read-gk5bu158504957996",
+    "Give me a book.",
+    "Brutal depiction of the hardships of the Swiss during Habsburg rule. https://mangakakalot.com/read-ym8ma158524469013",
+    "What do you do?",
+    "Disappointing people.",
+
 ]
