@@ -2,7 +2,6 @@ appdirs==1.4.3
 asgiref==3.2.7
 astroid==2.4.2
 beautifulsoup4==4.9.1
-bella==2.1.4
 certifi==2020.4.5.1
 chardet==3.0.4
 colorama==0.4.3
@@ -10,10 +9,6 @@ COVID19Py==0.3.0
 Cython==0.29.21
 dataclasses-json==0.5.2
 distlib==0.3.0
-Django==3.0.7
-django-crispy-forms==1.9.1
-django-el-pagination==3.3.0
-django-endless-pagination==2.0
 docutils==0.16
 filelock==3.0.12
 fire==0.3.1
