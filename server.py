@@ -72,9 +72,6 @@ def make_reply(msg):
         elif msg == "proj":
             reply = "Here's the details of my project in GitHub: " + heart.projectlink
 
-        elif msg == "rlist":
-            reply = random.choice(heart.rlist)
-
         elif "bio" in msg:
             msg = msg.replace("bio ", "")
             name = msg.split()
