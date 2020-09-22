@@ -50,7 +50,7 @@ usefulhelp = """ Here are the useful commands.
 
 """
 
-fun = """ Commands to summon the funny:
+fun = """ Commands to summon the amusement:
 
 1.) 'cats' or 'cat' = Returns a random image of a cat in jpg or gif. I really love cats you know.
 
@@ -245,11 +245,7 @@ customtext= [
     "Sorry for always making you upset.",
     "My creator's not really in a good shape.",
     "Give me a book.",
-    "This is one of my favourites. https://mangakakalot.com/read-dg9wm158504869776".upper(),
-    "Give me a book.",
-    "Based on the trying times of the Roman Republic! https://mangakakalot.com/read-gk5bu158504957996",
-    "Give me a book.",
-    "Brutal depiction of the hardships of the Swiss during Habsburg rule. https://mangakakalot.com/read-ym8ma158524469013",
+    "This is one of my favourites. Identity! https://mangakakalot.com/read-dg9wm158504869776 \n\n Brutal depiction of the hardships of the Swiss during Habsburg rule. https://mangakakalot.com/read-ym8ma158524469013 \n\n Based on the trying times of the Roman Republic! https://mangakakalot.com/read-gk5bu158504957996 ",
     "What do you do?",
     "Disappointing people.",
 

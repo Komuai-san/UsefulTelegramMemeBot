@@ -228,6 +228,9 @@ def make_reply(msg):
             except:
                 reply = "Oof. Error. If you forgot the commands, just type 'main'."
 
+        elif msg == "fun":
+            reply = heart.fun
+
         elif "weder" in msg:
             try:
                 msg = msg.replace("weder ", "")
@@ -306,25 +309,23 @@ def make_reply(msg):
                 reply = heart.mainhelp
 
         elif msg == "dogs" or msg == "dog" or msg == "doge":
-            quotetext = ["Here goes the Doge Barrage!", "Doge: I am the lucid dream. The monster in your nightmares. The fiend of a thousand faces. Just kidding. Can I have my food now?"]
             DOG_URL = 'http://api.thedogapi.com/v1/images/search'
             DOG_API_KEY = '3b392042-b329-4b00-a6f6-b14d3b585396'
             DOG_HEADERS = { 'x-api-key': DOG_API_KEY  }
             IMG_PARAMS = ['jpg,png', 'gif',]
             params = {"mime_types": random.choice(IMG_PARAMS)}
             thecat = requests.request("GET", DOG_URL, params=params, headers= DOG_HEADERS).json()
-            reply = random.choice(quotetext) + "\n" + thecat[0]['url']
+            reply = thecat[0]['url']
 
         # ==========================P U S S Y SECTION========================
         elif msg == "cats" or msg == "cat":
-            catquotetext = ["Cat: All will serve me in time.", "Cat: I'm fabulous!"]
             CAT_URL = 'http://api.thecatapi.com/v1/images/search'
             CAT_API_KEY = 'fccdd277-481e-4ce8-91f6-74494640b167'
             CAT_HEADERS = { 'x-api-key': CAT_API_KEY  }
             IMG_PARAMS = ['jpg,png', 'gif',]
             params = {"mime_types": random.choice(IMG_PARAMS)}
             thecat = requests.request("GET", CAT_URL, params=params, headers= CAT_HEADERS).json()
-            reply = random.choice(catquotetext) + "\n" + thecat[0]['url']
+            reply = thecat[0]['url']
 
         # ==========================D A D J O K E S========================
         elif msg == "dadjoke":
