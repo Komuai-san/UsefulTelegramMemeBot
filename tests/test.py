@@ -69,7 +69,7 @@ while index <= 19:
 msg = 'https://www.youtube.com/watch?v=QqV-_7Ms92o'
 video = pafy.new(msg)
 audio = video.getbestaudio(preftype="m4a")
-url = shorten_url.short(audio.url_https)
-print(url)
+url = shorten_url.short(audio.url.replace("&", "&amp;"))
+print(audio.url)
 
 
