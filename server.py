@@ -201,8 +201,8 @@ def make_reply(msg):
                 msg = msg.replace("ytdl ", "")
                 video = pafy.new(msg)
                 audio = video.getbestaudio(preftype="m4a")
-                url = shorten_url.short(str(audio.url))
-                reply = url + audio.url
+                url = shorten_url.short(audio.url)
+                reply = audio.url.replace("&", "%26amp;")
             except:
                 heart.mainhelp
 
