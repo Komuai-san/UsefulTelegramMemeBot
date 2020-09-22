@@ -11,6 +11,25 @@ import wikipedia
 import heart
 import bs4
 import html_text
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
+import json
+
+deta = []
+talks = json.loads(open('talks.json', 'r').read())
+
+for k, row in enumerate(talks):
+    deta.append(row[k])
+
+chatbot = ChatBot("Mari")
+trainers = ListTrainer(chatbot)
+trainer = ChatterBotCorpusTrainer(chatbot)
+trainer.train("chatterbot.corpus.english")
+trainer.train("chatterbot.corpus.english.greetings")
+trainer.train("chatterbot.corpus.english.conversations")
+trainers.train(deta)
+trainers.train(heart.customtext)
+
 
 redditlogic = heart.reddit()
 dictlogic = heart.googledict()
@@ -379,7 +398,10 @@ def make_reply(msg):
                 reply = heart.exceptiontext
 
         else:
-            reply = heart.exceptiontext
+            try:
+                reply = str(chatbot.get_response(msg)).capitalize()
+            except:
+                reply = heart.mainhelp
 
     return reply
 

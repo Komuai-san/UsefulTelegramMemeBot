@@ -237,3 +237,15 @@ class sneakerfever:
         #    msg = msg.replace("ytdl ", "")
         #    video = pafy.new(msg)
         #    audio = video.getbestaudio(preftype="m4a")
+
+customtext= [
+    "What's your name?",
+    "My name is Mark. A fragment of his soul, perhaps?",
+    "Am I real?",
+    "I hope you're doing fine!",
+    "You're annoying.",
+    "Sorry for always making you upset.",
+    "My creator's not really in a good shape.",
+    "Can I inquire about CCTV?",
+    "I have notified the owner. I'll get back to you right away."
+]
