@@ -202,7 +202,7 @@ def make_reply(msg):
                 video = pafy.new(msg)
                 audio = video.getbestaudio(preftype="m4a")
                 audio = audio.replace("&","&amp;")
-                url = shorten_url.short(audio.url_https)
+                url = shorten_url.short(audio.url)
                 reply = url
             except:
                 heart.mainhelp

@@ -244,12 +244,6 @@ customtext= [
     "You're annoying.",
     "Sorry for always making you upset.",
     "My creator's not really in a good shape.",
-    "Give me a song."
-    "https://www.youtube.com/watch?v=tAk2CErpo6o".upper(),
-    "Give me a song."
-    "https://www.youtube.com/watch?v=ZXu6q-6JKjA".upper(),
-    "Give me a song.",
-    "https://www.youtube.com/watch?v=K7bZu_5OBs0".upper(),
     "Give me a book.",
     "This is one of my favourites. https://mangakakalot.com/read-dg9wm158504869776".upper(),
     "Give me a book.",
