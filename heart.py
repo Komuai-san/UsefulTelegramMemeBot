@@ -2,6 +2,9 @@ import requests
 import json
 import random
 import datetime
+from newsapi import NewsApiClient
+import dateutil.parser
+import random
 #===============================HELPTEXT===============================
 
 mainhelp = """Hi there! This might be an introduction, or there might be an error (whatever). To know about the commands for specific tasks, kindly type one of these (without the quotation marks.)
@@ -228,6 +231,28 @@ class sneakerfever:
                 """
 
         return shoeslist
+
+
+class thenews:
+    def __init__(self):
+        pass
+
+    def getNews(self):
+        newsapi = NewsApiClient(api_key='4f1571a2b1af4f2089d6ab2d33d67109')
+        topheadlines = newsapi.get_top_headlines(sources="bbc-news")
+
+        articles = topheadlines['articles']
+
+        news = []
+
+        for i in range(len(articles)):
+            myarticles = articles [i]
+
+            news.append(myarticles['title'] + "\n\n\nArticle by: " + myarticles['author'] + "\n\n\nDate Posted: " + str(dateutil.parser.parse(myarticles['publishedAt'])) + "\n\n\n" + myarticles['description'] + "\n\n\n" + myarticles['url'] + "\n\n\n" +  myarticles['urlToImage'])
+
+        return news
+
+
 
 
 # ==========================WORK IN PROGRESS==================

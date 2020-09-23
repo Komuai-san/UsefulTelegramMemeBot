@@ -35,6 +35,7 @@ trainers.train(heart.customtext)
 redditlogic = heart.reddit()
 dictlogic = heart.googledict()
 sneakers = heart.sneakerfever()
+zenews = heart.thenews()
 
 reddit = praw.Reddit(client_id=config.client_id, 
                      client_secret=config.client_secret, 
@@ -59,6 +60,7 @@ def make_reply(msg):
             quote = requests.get(url).json()
 
             reply = quote['content'] + " - " + quote['author']
+        #===========================HELPTEXTS===============================
 
         elif msg == "main":
             reply = heart.mainhelp
@@ -69,9 +71,10 @@ def make_reply(msg):
         elif msg =="red":
             reply = heart.exceptiontext
 
-        #===========================HELPTEXTS===============================
         elif msg == "proj":
             reply = "Here's the details of my project in GitHub: " + heart.projectlink
+
+        #=========================BOOK========================================
 
         elif "bio" in msg:
             msg = msg.replace("bio ", "")
@@ -184,7 +187,8 @@ def make_reply(msg):
                 reply = thebok
             except:
                 reply = "Sorry. It seems there's no excerpt for the book you're looking for."
-        
+
+        #===============================SAPATOS=======================================
         elif msg == "mshoes":
             flavorlist = ["Here's a random pair of men's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 "]
             toptext = random.choice(flavorlist)
@@ -196,6 +200,8 @@ def make_reply(msg):
                 except:
                     continue
         
+
+        #=================================YTDL NA HINDI NAMAN GUMAGANA=====================================
         elif "ytdl" in msg:
             try:
                 msg = msg.replace("ytdl ", "")
@@ -206,6 +212,8 @@ def make_reply(msg):
             except:
                 heart.mainhelp
 
+
+        #===============================SAPATOS ULET=======================================
         elif msg == "wshoes":
 
             flavorlist = ["Here's a random pair of women's shoes that might pique your interest. 😎 ", "I hope it's a set of nice kicks! 🤔 ", "I just hope it isn't that expensive. 👟👟 ", "Nice set stompers. I wonder why they don't sell greaves anymore?"]
@@ -231,6 +239,8 @@ def make_reply(msg):
         elif msg == "fun":
             reply = heart.fun
 
+
+        #======================================WEATHER WEATHER=========================================
         elif "weder" in msg:
             try:
                 msg = msg.replace("weder ", "")
@@ -251,6 +261,8 @@ def make_reply(msg):
             except:
                 reply = "Oof. It looks like an error occurred."
 
+
+        #============================================WEKEPEDIA====================================================
         elif "weekc" in msg:    
             try:
                 msg = msg.replace("weekc ", "")
@@ -278,7 +290,8 @@ def make_reply(msg):
             
             except:
                 pass
-
+        
+        #======================================================GAMORAVIRUS=================================================
         elif msg == "corona":
             try:
                 url = 'https://covid-193.p.rapidapi.com/statistics'
@@ -308,6 +321,24 @@ def make_reply(msg):
             except:
                 reply = heart.mainhelp
 
+
+        #===========================================BALITA=========================================================
+        elif msg == "news":
+            try:
+                balita = zenews.getNews()
+                rando = random.randint(0, 10)
+                while True:
+                    try:
+                        reply = "Here's a random headline news for you: " + listToString(balita[rando])
+                        break
+                    except:
+                        continue
+
+            except:
+                reply = "The news source is unavailable right now."
+
+
+        #===========================================CATS AND DOGS==================================================
         elif msg == "dogs" or msg == "dog" or msg == "doge":
             DOG_URL = 'http://api.thedogapi.com/v1/images/search'
             DOG_API_KEY = '3b392042-b329-4b00-a6f6-b14d3b585396'
