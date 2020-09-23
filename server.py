@@ -194,7 +194,15 @@ def make_reply(msg):
             url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type={}'.format(msg)
             mek = requests.get(url).json()
             color = []
+            rando = random.randint(0, 150)
+            
+
             try:
+                reply = mek[rando]['name']
+            except:
+                reply = "Oof. Something went wrong."
+
+            """try:
                 while True:
                     try:
                         rando = random.randint(0, 500)
@@ -221,10 +229,10 @@ def make_reply(msg):
                         tags = "Tags: " + mek[rando]['tag_list']
 
                         
-                    reply = "You might like this one: \n\n" + listToString(a) + "\n\nColors: " + str(color)[1:-1] + "\n\n" + tags
+                    reply = "You might like this one: \n\n" + listToString(a) + "\n\nColours: " + str(color)[1:-1] + "\n\n" + tags
                 
             except:
-                reply = "Source seems unavailable right now."
+                reply = "Source seems unavailable right now."""
 
 
         #===============================SAPATOS=======================================
