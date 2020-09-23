@@ -34,26 +34,21 @@ url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstic
 mek = requests.get(url).json()
 
 tags = []
+def listToString(s):
+    str1 = "\n \n"
+    return (str1.join(s).replace(" & ", " AND "))
 
-"""while True:
+while True:
     try:
         rando = random.randint(0, 500)
-        a = [mek[rando]['brand']]
-        b = [mek[rando]['name']]
-        c = [mek[rando]['price']]
-        d = [mek[rando]['product_link']]
-        e = [mek[rando]['image_link']]
-        f = [mek[rando]['description']]
-        g = [mek[rando]['rating']]
+        a = [mek[rando]['brand'], mek[rando]['name'], str(mek[rando]['price']), mek[rando]['product_link'], mek[rando]['image_link'], mek[rando]['description'], str(mek[rando]['rating'])]
         break
     except:
         continue
 
 
-thelist = list(zip(a, b, c, d, e, f, g))
+print(listToString(a))
 
-
-print(thelist[0])"""
 
 """color = []
 index = 0
@@ -76,7 +71,7 @@ i2 = 0
 
 print(mek[rando]['tag_list'])"""
 
-print(mek[5]['tag_list'])
+"""print(mek[5]['tag_list'])
 
 while True:
     try:
@@ -92,5 +87,5 @@ while True:
         break
 
     except:
-        continue
+        continue"""
 

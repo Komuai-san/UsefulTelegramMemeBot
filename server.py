@@ -137,7 +137,6 @@ def make_reply(msg):
                 
             except:
                 reply = "Something might be wrong with the name"
-                
 
         elif "otor" in msg:
             msg = msg.replace("otor ", "")
@@ -187,6 +186,46 @@ def make_reply(msg):
                 reply = thebok
             except:
                 reply = "Sorry. It seems there's no excerpt for the book you're looking for."
+
+
+        elif "meiku" in msg:
+            msg = msg.replace("meiku ", msg)
+            index = 0
+            url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type={}'.format(msg)
+            mek = requests.get(url).json()
+            color = []
+            try:
+                while True:
+                    try:
+                        rando = random.randint(0, 500)
+                        a = ["Brand: " + mek[rando]['brand'], "Name: " + mek[rando]['name'], "Price: " + str(mek[rando]['price']), "Link: " + mek[rando]['product_link'], "Image: " + mek[rando]['image_link'], "Description: " + mek[rando]['description'], "Rating: " + str(mek[rando]['rating'])]
+                        break
+                    except:
+                        continue
+
+                    try:
+                        while index <=10:
+                            try:
+                                color.append(mek[rando]['product_colors'][index]['colour_name'])
+                                index+=1
+                                
+                            except:
+                                break
+                    except:
+                        pass
+
+                    if len(mek[rando]['tag_list']) == 0:
+                        tags = "No Tags."
+
+                    else:
+                        tags = "Tags: " + mek[rando]['tag_list']
+
+                        
+                    reply = "You might like this one: \n\n" + listToString(a) + "\n\nColors: " + str(color)[1:-1] + "\n\n" + tags
+                
+            except:
+                reply = "Source seems unavailable right now."
+
 
         #===============================SAPATOS=======================================
         elif msg == "mshoes":
@@ -326,9 +365,10 @@ def make_reply(msg):
         elif msg == "news":
             try:
                 balita = zenews.getNews()
-                rando = random.randint(0, 10)
+                
                 while True:
                     try:
+                        rando = random.randint(0, 10)
                         reply = "Here's a random headline news for you:\n\n" + balita[rando]
                         break
                     except:
@@ -438,57 +478,6 @@ def make_reply(msg):
 
             except:
                 reply = heart.mainhelp
-
-
-        elif "meiku" in msg:
-            msg = msg.replace("meiku ", "")
-            try:
-                url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type={}'.format(msg)
-                mek = requests.get(url).json()
-               
-                color = []
-                tags = []
-                index = 0
-                
-                while True:
-                    try:
-                        rando = random.randint(0, 500)
-                        a = ["Brand: " + mek[rando]['brand']]
-                        b = ["Name: " + mek[rando]['name']]
-                        c = ["Price: " + mek[rando]['price']]
-                        d = ["Link: " + mek[rando]['product_link']]
-                        e = ["Image: " + mek[rando]['image_link']]
-                        f = ["Description: " + mek[rando]['description']]
-                        g = ["Rating: " + mek[rando]['rating']]
-                        break
-
-                    except:
-                        continue
-
-                try:
-                    while index <=10:
-                        try:
-                            color.append(mek[rando]['product_colors'][index]['colour_name'])
-                            index+=1
-                        except:
-                            break
-                except:
-                    pass
-
-                mekku = list(zip(a, b, c, d, e, f, g))
-                
-                if len(mek[rando]['tag_list']) == 0:
-                    tags = "No Tags."
-
-                else:
-                    tags = "Tags: " + mek[rando]['tag_list']
-                
-                reply = "Here's what you might have been looking for. I hope you like it. \n\n" + listToString(mekku[0]) + "\n\nColours Available: " + str(color)[1:-1] + "\n\n" + tags
-
-
-
-            except:
-                reply = "Oof. Seems like the query isn't in the list of products."
 
 
         else:
