@@ -47,9 +47,11 @@ usefulhelp = """ Here are the useful commands.
 
 9.) 'weder' plus city/country = To know the current weather.
 
-10.) 'unsplash' plus anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
+10.) 'news' = To get a latest headline article.
 
-1.) 'quote' = Shows a random quote from famous figures.
+11.) 'unsplash' plus anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
+
+12.) 'quote' = Shows a random quote from famous figures.
 
 """
 
@@ -253,6 +255,13 @@ class thenews:
         return news
 
 
+        
+
+        
+
+
+
+
 
 
 # ==========================WORK IN PROGRESS==================
@@ -270,8 +279,8 @@ customtext= [
     "Sorry for always making you upset.",
     "My creator's not really in a good shape.",
     "Give me a book.",
-    "This is one of my favourites. Identity! https://mangakakalot.com/read-dg9wm158504869776 \n\n Brutal depiction of the hardships of the Swiss during Habsburg rule. https://mangakakalot.com/read-ym8ma158524469013 \n\n Based on the trying times of the Roman Republic! https://mangakakalot.com/read-gk5bu158504957996 ",
+    "This is one of my favourites. Identity! https://mangakakalot.com/read-dg9wm158504869776 \n\n\n Brutal depiction of the hardships of the Swiss during Habsburg rule. https://mangakakalot.com/read-ym8ma158524469013 \n\n\n Based on the trying times of the Roman Republic! https://mangakakalot.com/read-gk5bu158504957996 ",
     "What do you do?",
     "Disappointing people.",
-
+    
 ]
