@@ -188,10 +188,39 @@ def make_reply(msg):
                 reply = "Sorry. It seems there's no excerpt for the book you're looking for."
 
 
-        elif msg == "meiku":
-            msg = msg.replace("meiku ", msg)
+        elif "meiku" in msg:
             index = 0
-            url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick'
+
+            if msg == "meiku lipstick":
+                url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick'
+
+            elif msg == "meiku lip liner":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=lip_liner'
+
+            elif msg == "meiku mascara":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=mascara'
+            
+            elif msg == "meiku bronzer":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=bronzer'
+
+            elif msg == "meiku foundation":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=foundation'
+
+            elif msg == "meiku nail polish":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=nail_polish'
+
+            elif msg == "meiku eyeshadow":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyeshadow'
+            
+            elif msg == "meiku eyeliner":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyeliner'
+
+            elif msg == "meiku eyebrow":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyebrow'
+
+            else:
+                reply = "Kindly choose a correct category."
+            
             mek = requests.get(url).json()
             color = []
             rando = 2
@@ -200,7 +229,7 @@ def make_reply(msg):
                 while True:
                     try:
                         rando = random.randint(0, 500)
-                        a = ["Brand: " + mek[rando]['brand'], "Name: " + mek[rando]['name'], "Price: " + str(mek[rando]['price']), "Link: " + mek[rando]['product_link'], "Image: " + mek[rando]['image_link'], "Description: " + mek[rando]['description'], "Rating: " + str(mek[rando]['rating'])]
+                        a = ["Brand: " + mek[rando]['brand'], "Name: " + mek[rando]['name'], "Price: $ " + str(mek[rando]['price']), "Link: " + mek[rando]['product_link'], "Image: " + mek[rando]['image_link'], "Description: " + mek[rando]['description'], "Rating: " + str(mek[rando]['rating'])]
                         break
                     except:
                         continue

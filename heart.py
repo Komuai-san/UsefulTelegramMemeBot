@@ -35,6 +35,8 @@ usefulhelp = """ Here are the useful commands.
 
 4.) 'wshoes' = Same thing, but it shows a pair of shoes for women.
 
+5.) 'meiku' + product type = Returns a random set of make-up depending on product type. Kindly type one of these (in small letters) after typing "meiku": blush, bronzer, eyebrow, eyeliner, eyeshadow, foundation, lip liner, lipstick, mascara, nail polish.
+
 5.) 'bio' plus First name and last name of author = Returns a short information about the author you've entered.
 
 6.) 'otor' plus Author's name or full name = Returns a list of an author's written works and their ISBN (or books related to them). It's primed to a maximum of 40 books.
