@@ -196,28 +196,31 @@ def make_reply(msg):
                 url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick'
 
             elif msg == "lip liner":
-                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=lip_liner'
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=lip_liner'
+
+            elif msg == "blush":
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush'
 
             elif msg == "mascara":
-                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=mascara'
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=mascara'
             
             elif msg == "bronzer":
-                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=bronzer'
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=bronzer'
 
             elif msg == "foundation":
-                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=foundation'
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=foundation'
 
             elif msg == "nail polish":
-                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=nail_polish'
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=nail_polish'
 
             elif msg == "eyeshadow":
-                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyeshadow'
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=eyeshadow'
             
             elif msg == "eyeliner":
-                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyeliner'
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=eyeliner'
 
             elif msg == "eyebrow":
-                url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyebrow'
+                url = 'https://makeup-api.herokuapp.com/api/v1/products.json?product_type=eyebrow'
 
             else:
                 reply = "Kindly choose a correct category."
