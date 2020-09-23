@@ -329,7 +329,7 @@ def make_reply(msg):
                 rando = random.randint(0, 10)
                 while True:
                     try:
-                        reply = "Here's a random headline news for you: " + listToString(balita[rando])
+                        reply = "Here's a random headline news for you: " + balita[rando]
                         break
                     except:
                         continue
