@@ -233,7 +233,7 @@ def make_reply(msg):
                 while True:
                     try:
                         rando = random.randint(0, 500)
-                        a = ["Brand: " + mek[rando]['brand'], "Name: " + mek[rando]['name'], "Price: $ " + str(mek[rando]['price']), "Link: " + mek[rando]['product_link'], "Image: " + mek[rando]['image_link'], "Description: " + mek[rando]['description'], "Rating: " + str(mek[rando]['rating'])]
+                        a = ["Brand: " + mek[rando]['brand'], "Name: " + mek[rando]['name'], "Price: $" + str(mek[rando]['price']), "Link: " + mek[rando]['product_link'], "Image: " + mek[rando]['image_link'], "Description: " + mek[rando]['description'], "Rating: " + str(mek[rando]['rating'])]
                         break
                     except:
                         continue
