@@ -188,10 +188,10 @@ def make_reply(msg):
                 reply = "Sorry. It seems there's no excerpt for the book you're looking for."
 
 
-        elif "meiku" in msg:
+        elif msg == "meiku":
             msg = msg.replace("meiku ", msg)
             index = 0
-            url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type={}'.format(msg)
+            url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick'
             mek = requests.get(url).json()
             color = []
             rando = 2

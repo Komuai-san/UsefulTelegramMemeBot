@@ -50,7 +50,7 @@ while True:
 
 print(listToString(a))"""
 
-print(mek[2]['name'])
+print(mek)
 
 
 """color = []
