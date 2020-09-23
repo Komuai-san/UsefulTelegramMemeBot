@@ -28,12 +28,13 @@ while True:
     except:
         continue"""
     
-mekku=[]
-url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick'
+msg = str(input("Eneter: "))
+url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type={}'.format(msg)
 
 mek = requests.get(url).json()
 
-tags = []
+"""tags = []
+
 def listToString(s):
     str1 = "\n \n"
     return (str1.join(s).replace(" & ", " AND "))
@@ -47,7 +48,9 @@ while True:
         continue
 
 
-print(listToString(a))
+print(listToString(a))"""
+
+print(mek[2]['name'])
 
 
 """color = []

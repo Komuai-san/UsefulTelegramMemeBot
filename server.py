@@ -198,7 +198,7 @@ def make_reply(msg):
 
 
             try:
-                reply = mek[rando]['name']
+                reply = mek
             except Exception as e:
                 reply = e
 
