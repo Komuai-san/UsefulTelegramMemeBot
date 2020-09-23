@@ -194,8 +194,8 @@ def make_reply(msg):
             url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type={}'.format(msg)
             mek = requests.get(url).json()
             color = []
-            rando = random.randint(0, 150)
-            
+            rando = 2
+
 
             try:
                 reply = mek[rando]['name']
@@ -211,25 +211,25 @@ def make_reply(msg):
                     except:
                         continue
 
-                    try:
-                        while index <=10:
-                            try:
-                                color.append(mek[rando]['product_colors'][index]['colour_name'])
-                                index+=1
+                try:
+                    while index <=10:
+                        try:
+                            color.append(mek[rando]['product_colors'][index]['colour_name'])
+                            index+=1
                                 
-                            except:
-                                break
-                    except:
-                        pass
+                        except:
+                            break
+                except:
+                    pass
 
-                    if len(mek[rando]['tag_list']) == 0:
-                        tags = "No Tags."
+                if len(mek[rando]['tag_list']) == 0:
+                    tags = "No Tags."
 
-                    else:
-                        tags = "Tags: " + mek[rando]['tag_list']
+                else:
+                    tags = "Tags: " + mek[rando]['tag_list']
 
                         
-                    reply = "You might like this one: \n\n" + listToString(a) + "\n\nColours: " + str(color)[1:-1] + "\n\n" + tags
+                reply = "You might like this one: \n\n" + listToString(a) + "\n\nColours: " + str(color)[1:-1] + "\n\n" + tags
                 
             except:
                 reply = "Source seems unavailable right now."""
