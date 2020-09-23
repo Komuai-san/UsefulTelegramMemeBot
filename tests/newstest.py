@@ -1,6 +1,8 @@
 import requests
 import json
 import random
+import html_text
+
 """from newsapi import NewsApiClient
 import dateutil.parser
 
@@ -26,7 +28,7 @@ while True:
     except:
         continue"""
     
-
+mekku=[]
 url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick'
 
 mek = requests.get(url).json()
@@ -36,18 +38,24 @@ tags = []
 while True:
     try:
         rando = random.randint(0, 500)
-        print(mek[rando]['brand'])
-        print(mek[rando]['name'])
-        print(mek[rando]['price'])
-        print(mek[rando]['product_link'])
-        print(mek[rando]['image_link'])
-        print(mek[rando]['description'])
-        print(mek[rando]['rating'])
+        a = [mek[rando]['brand']]
+        b = [mek[rando]['name']]
+        c = [mek[rando]['price']]
+        d = [mek[rando]['product_link']]
+        e = [mek[rando]['image_link']]
+        f = [mek[rando]['description']]
+        g = [mek[rando]['rating']]
         break
     except:
         continue
 
-color = []
+
+thelist = list(zip(a, b, c, d, e, f, g))
+
+
+print(thelist[0])
+
+"""color = []
 index = 0
 try:
     
@@ -66,4 +74,23 @@ print(str(color)[1:-1])
 
 i2 = 0
 
-print(mek[rando]['tag_list'])
+print(mek[rando]['tag_list'])"""
+
+"""print(mek[5]['tag_list'])
+
+while True:
+    try:
+        rando = random.randint(0, 500)
+        mekku.append("Brand: " + mek[rando]['brand'])
+        mekku.append("Name: " + mek[rando]['name'])
+        mekku.append("Price: " + mek[rando]['price'])
+        mekku.append("Link: " + mek[rando]['product_link'])
+        mekku.append("Image: " + mek[rando]['image_link'])
+        mekku.append("Description: " + html_text.extract_text(mek[rando]['description']))
+        mekku.append("Rating: " + mek[rando]['rating'])
+        print(mekku)
+        break
+
+    except:
+        continue"""
+

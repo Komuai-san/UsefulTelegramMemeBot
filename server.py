@@ -445,21 +445,21 @@ def make_reply(msg):
             try:
                 url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type={}'.format(msg)
                 mek = requests.get(url).json()
-                mekku = []
+               
                 color = []
                 tags = []
                 index = 0
                 
                 while True:
                     try:
-                        rando = random.randint(0, 1000)
-                        mekku.append("Brand: " + mek[rando]['brand'])
-                        mekku.append("Name: " + mek[rando]['name'])
-                        mekku.append("Price: " + mek[rando]['price'])
-                        mekku.append("Link: " + mek[rando]['product_link'])
-                        mekku.append("Image: " + mek[rando]['image_link'])
-                        mekku.append("Description: " + html_text.extract_text(mek[rando]['description']))
-                        mekku.append("Rating: " + mek[rando]['rating'])
+                        rando = random.randint(0, 500)
+                        a = ["Brand: " + mek[rando]['brand']]
+                        b = ["Name: " + mek[rando]['name']]
+                        c = ["Price: " + mek[rando]['price']]
+                        d = ["Link: " + mek[rando]['product_link']]
+                        e = ["Image: " + mek[rando]['image_link']]
+                        f = ["Description: " + html_text.extract_text(mek[rando]['description'])]
+                        g = ["Rating: " + mek[rando]['rating']]
                         break
 
                     except:
@@ -474,6 +474,8 @@ def make_reply(msg):
                             break
                 except:
                     pass
+
+                mekku = list(zip(a, b, c, d, e, f, g))
                 
                 if len(mek[rando]['tag_list']) == 0:
                     tags = "No Tags."
