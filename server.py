@@ -189,33 +189,34 @@ def make_reply(msg):
 
 
         elif "meiku" in msg:
+            msg = msg.replace("meiku ", "")
             index = 0
 
-            if msg == "meiku lipstick":
+            if msg == "lipstick":
                 url = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick'
 
-            elif msg == "meiku lip liner":
+            elif msg == "lip liner":
                 url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=lip_liner'
 
-            elif msg == "meiku mascara":
+            elif msg == "mascara":
                 url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=mascara'
             
-            elif msg == "meiku bronzer":
+            elif msg == "bronzer":
                 url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=bronzer'
 
-            elif msg == "meiku foundation":
+            elif msg == "foundation":
                 url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=foundation'
 
-            elif msg == "meiku nail polish":
+            elif msg == "nail polish":
                 url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=nail_polish'
 
-            elif msg == "meiku eyeshadow":
+            elif msg == "eyeshadow":
                 url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyeshadow'
             
-            elif msg == "meiku eyeliner":
+            elif msg == "eyeliner":
                 url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyeliner'
 
-            elif msg == "meiku eyebrow":
+            elif msg == "eyebrow":
                 url = 'https://makeup-api.herokuapp.com/api/v1/products?product_type=eyebrow'
 
             else:
