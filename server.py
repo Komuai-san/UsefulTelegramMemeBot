@@ -199,8 +199,8 @@ def make_reply(msg):
 
             try:
                 reply = mek[rando]['name']
-            except:
-                reply = "Oof. Something went wrong."
+            except Exception as e:
+                reply = e
 
             """try:
                 while True:
