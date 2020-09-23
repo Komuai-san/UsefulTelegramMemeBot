@@ -225,9 +225,8 @@ def make_reply(msg):
                         
                 reply = "You might like this one: \n\n" + listToString(a) + "\n\nColours: " + str(color)[1:-1] + "\n\n" + tags
                 
-            except:
-                reply = "Source seems unavailable right now."
-
+            except Exception as e:
+                reply = e 
 
         #===============================SAPATOS=======================================
         elif msg == "mshoes":
