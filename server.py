@@ -196,13 +196,7 @@ def make_reply(msg):
             color = []
             rando = 2
 
-
             try:
-                reply = mek
-            except Exception as e:
-                reply = e
-
-            """try:
                 while True:
                     try:
                         rando = random.randint(0, 500)
@@ -232,7 +226,7 @@ def make_reply(msg):
                 reply = "You might like this one: \n\n" + listToString(a) + "\n\nColours: " + str(color)[1:-1] + "\n\n" + tags
                 
             except:
-                reply = "Source seems unavailable right now."""
+                reply = "Source seems unavailable right now."
 
 
         #===============================SAPATOS=======================================
