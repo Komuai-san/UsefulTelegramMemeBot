@@ -458,7 +458,7 @@ def make_reply(msg):
                         c = ["Price: " + mek[rando]['price']]
                         d = ["Link: " + mek[rando]['product_link']]
                         e = ["Image: " + mek[rando]['image_link']]
-                        f = ["Description: " + html_text.extract_text(mek[rando]['description'])]
+                        f = ["Description: " + mek[rando]['description']]
                         g = ["Rating: " + mek[rando]['rating']]
                         break
 
@@ -483,7 +483,7 @@ def make_reply(msg):
                 else:
                     tags = "Tags: " + mek[rando]['tag_list']
                 
-                reply = "Here's what you might have been looking for. I hope you like it. \n\n" + listToString(mekku) + "\n\nColours Available: " + str(color)[1:-1] + "\n\n" + tags
+                reply = "Here's what you might have been looking for. I hope you like it. \n\n" + listToString(mekku[0]) + "\n\nColours Available: " + str(color)[1:-1] + "\n\n" + tags
 
 
 

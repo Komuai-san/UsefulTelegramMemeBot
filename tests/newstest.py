@@ -35,7 +35,7 @@ mek = requests.get(url).json()
 
 tags = []
 
-while True:
+"""while True:
     try:
         rando = random.randint(0, 500)
         a = [mek[rando]['brand']]
@@ -53,7 +53,7 @@ while True:
 thelist = list(zip(a, b, c, d, e, f, g))
 
 
-print(thelist[0])
+print(thelist[0])"""
 
 """color = []
 index = 0
@@ -76,7 +76,7 @@ i2 = 0
 
 print(mek[rando]['tag_list'])"""
 
-"""print(mek[5]['tag_list'])
+print(mek[5]['tag_list'])
 
 while True:
     try:
@@ -86,11 +86,11 @@ while True:
         mekku.append("Price: " + mek[rando]['price'])
         mekku.append("Link: " + mek[rando]['product_link'])
         mekku.append("Image: " + mek[rando]['image_link'])
-        mekku.append("Description: " + html_text.extract_text(mek[rando]['description']))
+        mekku.append("Description: " + mek[rando]['description'])
         mekku.append("Rating: " + mek[rando]['rating'])
         print(mekku)
         break
 
     except:
-        continue"""
+        continue
 
