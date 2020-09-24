@@ -253,7 +253,7 @@ def make_reply(msg):
                     tags = "No Tags."
 
                 else:
-                    tags = "Tags: " + mek[rando]['tag_list']
+                    tags = "Tags: " + str(mek[rando]['tag_list'])[1:-1]
 
                         
                 reply = "You might like this one: \n\n" + listToString(a) + "\n\nColours: " + str(color)[1:-1] + "\n\n" + tags

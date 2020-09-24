@@ -279,6 +279,8 @@ class thenews:
 customtext= [
     "What's your name?",
     "My name is Mark. A fragment of his soul, perhaps?",
+    "Who are you?",
+    "A fragment of my creator's soul.",
     "How are you?",
     "Good! I hope you're doing fine!",
     "You're annoying.",
