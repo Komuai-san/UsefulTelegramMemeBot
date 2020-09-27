@@ -63,6 +63,7 @@ thinc==8.0.0a1
 toml==0.10.1
 tornado==6.0.4
 tqdm==4.49.0
+udpy==2.0.0
 update-checker==0.18.0
 urllib3==1.25.9
 virtualenv==20.0.31

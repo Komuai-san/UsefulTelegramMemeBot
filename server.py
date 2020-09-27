@@ -15,6 +15,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
 import json
 import shorten_url
+from udpy import UrbanClient
 
 deta = []
 talks = json.loads(open('talks.json', 'r').read())
@@ -30,6 +31,7 @@ trainer.train("chatterbot.corpus.english.greetings")
 trainer.train("chatterbot.corpus.english.conversations")
 trainers.train(deta)
 trainers.train(heart.customtext)
+udclient = UrbanClient()
 
 
 redditlogic = heart.reddit()
@@ -74,7 +76,35 @@ def make_reply(msg):
         elif msg == "proj":
             reply = "Here's the details of my project in GitHub: " + heart.projectlink
 
-        #=========================BOOK========================================
+        #=========================URBANDICTIONARY=================================
+        elif "udic" in msg:
+            try:
+                msg = msg.replace("udic ", "")
+                defenesyon = udclient.get_definition(msg)
+                orban = []
+
+                for index, d in enumerate(defenesyon):
+                    orban.append(str(index) + "). " + d.definition)
+
+                reply = "Here are the definitions of {} that you're looking for: \n\n".format(msg) + listToString(orban)
+
+            except:
+                reply = "Something went wrong. Sorry."
+
+        
+        elif msg == "udrand":
+            try:
+                defenesyon = udclient.get_random_definition()
+                orban = []
+                word = []
+                
+                for index, d in enumerate(defenesyon):
+                    orban.append(str(index) + "). " + d.definition)
+                    word.append(d.word)
+
+                reply = "Here are the urban definitions for the random word {}".format(str(word[0])) + listToString(orban)
+                
+        #==============================BOOK========================================
 
         elif "bio" in msg:
             msg = msg.replace("bio ", "")
