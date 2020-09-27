@@ -103,6 +103,9 @@ def make_reply(msg):
                     word.append(d.word)
 
                 reply = "Here are the urban definitions for the random word {}".format(str(word[0])) + listToString(orban)
+
+            except:
+                reply = "Something went wrong. Sorry."
                 
         #==============================BOOK========================================
 
