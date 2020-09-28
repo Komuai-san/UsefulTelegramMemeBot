@@ -101,8 +101,8 @@ def make_reply(msg):
 
                 reply = listToString(thelist)
 
-            except:
-                reply = "Seems like I cannot fetch any data! Sorry."
+            except Exception as e:
+                reply = e
 
 
         #=========================URBANDICTIONARY=================================
