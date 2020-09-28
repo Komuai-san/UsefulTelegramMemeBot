@@ -57,7 +57,7 @@ usefulhelp = """ Here are the useful commands.
 
 15.) 'unsplash' plus anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
 
-16.) 'quote' = Shows a random quote from famous figures.
+16.) 'quote' or 'quotes' = Shows a random quote from famous figures.
 
 """
 

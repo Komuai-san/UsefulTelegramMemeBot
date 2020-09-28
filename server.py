@@ -80,7 +80,7 @@ def make_reply(msg):
 
         #===============================4CHAN=====================================
         elif msg == "4ch":
-            boardlist = ['b', 'g', 'pol', 'tv', 'a', 'x', 'jp']
+            boardlist = ['g', 'pol', 'tv', 'a', 'x', 'jp']
             boards = chan.Board(random.choice(boardlist))
             allthreads = boards.get_all_threads(expand=False)
             thelist = []
