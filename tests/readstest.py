@@ -3,6 +3,7 @@ import json
 from udpy import UrbanClient
 import basc_py4chan as chan
 import random
+
 """goodweedskey = 'BITG2oRAnefsoqrs4VT21Q'
 goodweeds = 'eBUSUEE6rZWGnearzpO6m5lKMOjzqStTutX1MLXIA0'
 myid = '45546009'
@@ -21,7 +22,7 @@ for index, d in enumerate(defs):
     print(d.word)"""
 
 
-boardlist = ['b', 'g', 'pol', 'tv', 'a', 'x', 'jp']
+boardlist = ['g', 'pol', 'tv', 'a', 'x', 'jp']
 b = chan.Board(random.choice(boardlist))
 c = b.get_all_threads(expand=False)
 thelist = []
