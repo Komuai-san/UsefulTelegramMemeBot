@@ -37,23 +37,27 @@ usefulhelp = """ Here are the useful commands.
 
 5.) 'meiku' + product type = Returns a random set of make-up depending on product type. Kindly type one of these (in small letters) after typing "meiku": blush, bronzer, eyebrow, eyeliner, eyeshadow, foundation, lip liner, lipstick, mascara, nail polish.
 
-5.) 'bio' plus First name and last name of author = Returns a short information about the author you've entered.
+6.) 'bio' plus First name and last name of author = Returns a short information about the author you've entered.
 
-6.) 'otor' plus Author's name or full name = Returns a list of an author's written works and their ISBN (or books related to them). It's primed to a maximum of 40 books.
+7.) 'otor' plus Author's name or full name = Returns a list of an author's written works and their ISBN (or books related to them). It's primed to a maximum of 40 books.
 
-7.) 'bwok' plus ISBN of the book = Returns an excerpt of the book you're interested in. Search term must be in ISBN. The 'otor' command above can return ISBNs.
+8.) 'bwok' plus ISBN of the book = Returns an excerpt of the book you're interested in. Search term must be in ISBN. The 'otor' command above can return ISBNs.
 
-7.) 'dict' plus the word = Shows you the definition of the word with example, synonym, and audio file.
+9.) 'dict' plus the word = Shows you the definition of the word with example, synonym, and audio file.
 
-8.) 'corona' = To know about the corona cases in the Philippines.
+10.) 'udic' plus the word = Shows you the "Urban Dictionary" definitions of the word.
 
-9.) 'weder' plus city/country = To know the current weather.
+11.) 'udrand' = Shows you a random Urban Dictionary term or word.
 
-10.) 'news' = To get a latest headline article.
+12.) 'corona' = To know about the corona cases in the Philippines.
 
-11.) 'unsplash' plus anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
+13.) 'weder' plus city/country = To know the current weather.
 
-12.) 'quote' = Shows a random quote from famous figures.
+14.) 'news' = To get a latest headline article.
+
+15.) 'unsplash' plus anything = Returns an image closest to the word you searched. This is pretty much hit or miss, but the image is really high-quality. I suggest searching using broader terms.
+
+16.) 'quote' = Shows a random quote from famous figures.
 
 """
 
@@ -64,6 +68,8 @@ fun = """ Commands to summon the amusement:
 2.) 'dogs' or 'dog' or 'doge' = Returns a random image of a dog in jpg or gif. I believe it'll cheer anyone up.
 
 3.) 'dadjoke' = self-explanatory.
+
+4.) '4ch' = Shows a random SFW 4chan Post/Reply with an image. Might not have any context.
 
 """
 

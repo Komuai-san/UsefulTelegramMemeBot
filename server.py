@@ -16,6 +16,7 @@ from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
 import json
 import shorten_url
 from udpy import UrbanClient
+import basc_py4chan as chan
 
 deta = []
 talks = json.loads(open('talks.json', 'r').read())
@@ -75,6 +76,34 @@ def make_reply(msg):
 
         elif msg == "proj":
             reply = "Here's the details of my project in GitHub: " + heart.projectlink
+
+
+        #===============================4CHAN=====================================
+        elif msg == "4ch":
+            boardlist = ['b', 'g', 'pol', 'tv', 'a', 'x', 'jp']
+            boards = chan.Board(random.choice(boardlist))
+            allthreads = boards.get_all_threads(expand=False)
+            thelist = []
+
+            try:
+                while True:
+                    thread = random.choice(allthreads)
+                    for r in thread.replies:
+                        if r.has_file == True:
+                            thelist.append(r.textcomment)
+                            thelist.append(r.file_url)
+
+                    if not thelist:
+                        continue
+
+                    else:
+                        break
+
+                reply = listToString(thelist)
+
+            except:
+                reply = "Seems like I cannot fetch any data! Sorry."
+
 
         #=========================URBANDICTIONARY=================================
         elif "udic" in msg:

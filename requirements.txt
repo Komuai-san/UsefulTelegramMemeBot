@@ -2,6 +2,7 @@
 appdirs==1.4.4
 asgiref==3.2.10
 autopep8==1.5.4
+basc-py4chan==0.6.5
 beautifulsoup4==4.9.1
 catalogue==2.0.1
 certifi==2020.6.20
