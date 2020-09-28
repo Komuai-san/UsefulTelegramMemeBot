@@ -90,7 +90,7 @@ def make_reply(msg):
                     thread = random.choice(allthreads)
                     for r in thread.replies:
                         if r.has_file == True:
-                            thelist.append(r.textcomment)
+                            thelist.append(r.text_comment)
                             thelist.append(r.file_url)
 
                     if not thelist:
@@ -102,7 +102,7 @@ def make_reply(msg):
                 reply = listToString(thelist)
 
             except Exception as e:
-                reply = e
+                reply = "Sorry. Something went wrong!!"
 
 
         #=========================URBANDICTIONARY=================================
